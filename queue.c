@@ -6,7 +6,7 @@
 /*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 17:26:21 by maparmar          #+#    #+#             */
-/*   Updated: 2019/03/18 18:04:57 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/03/18 20:49:45 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void *dequeue(struct s_queue *queue)
 	if (queue->first)
 	{
 		value = queue->first->content;
+		queue->last = (queue->first == queue->last) ? NULL : queue->last;
 		queue->first = queue->first->next;
-		queue->last = (queue->last) ? queue->first : NULL;
 		free(temp);
 	}
 	return (value);
@@ -74,25 +74,18 @@ int isEmpty(struct s_queue *queue)
 int main(void)
 {
     struct s_queue  *q = init();
-    char            *content[][1] = {
-      "1",
-      "2",
-      "3",
-      "4",
-      "5"
-    };
+    char            *content[][1] = {"1","2","3","4","5"};
     for (int i = 0; i < 5; i++)
     {
         enqueue(q, *content[i]);
-        printf("Content : %s\n", peek(q));
-        printf("Empty   : %s\n", (isEmpty(q) ? "yes" : "no"));
+		printf("is Empty   : %s\n", (isEmpty(q) ? "yes" : "no"));
     }
+	printf("Peek Content : %s\n", peek(q));
     for (int i = 5; i > 0; i--)
     {
         dequeue(q);
-        printf("Content : %s\n", peek(q));
-        printf("Empty   : %s\n", (isEmpty(q) ? "yes" : "no"));
+		printf("is Empty   : %s\n", (isEmpty(q) ? "yes" : "no"));
     }
+	printf("Peek Content : %s\n", peek(q));
     return (0);
 }
-
