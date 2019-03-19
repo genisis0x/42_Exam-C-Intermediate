@@ -6,7 +6,7 @@
 /*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 17:26:21 by maparmar          #+#    #+#             */
-/*   Updated: 2019/03/18 20:49:45 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/03/18 20:52:28 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ int isEmpty(struct s_queue *queue)
 	return (queue->first ? 0 : 1);
 }
 
+/****************
+ 	TEST_MAIN
+****************/
+
+/*
 #include <stdio.h>
 int main(void)
 {
@@ -89,3 +94,4 @@ int main(void)
 	printf("Peek Content : %s\n", peek(q));
     return (0);
 }
+*/
