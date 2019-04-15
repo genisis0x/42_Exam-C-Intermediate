@@ -6,7 +6,7 @@
 /*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 20:30:26 by maparmar          #+#    #+#             */
-/*   Updated: 2019/03/17 21:34:04 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/14 15:16:50 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int height_tree(struct s_node *root)
 /*************
    TEST MAIN
 *************/
-/*
+
 #include "stdio.h"
 #include "stdlib.h"
 
@@ -63,4 +63,4 @@ int main (void)
 	printf("%d", height_tree(t));
 	return (0);
 }
-*/
+
