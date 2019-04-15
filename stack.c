@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/14 20:48:24 by maparmar          #+#    #+#             */
+/*   Updated: 2019/04/14 20:48:24 by maparmar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 struct s_node {
         void          *content;
@@ -50,7 +62,10 @@ struct s_node {
         return stack->top ? 0 : 1;
     }
 
-    #include <stdio.h>
+    /***********
+      Test Main
+    ************/
+    /*#include <stdio.h>
     int main (void)
     {
         struct s_stack * s = init();
@@ -67,4 +82,4 @@ struct s_node {
         printf("The second element of stack: %s\n", pop(s));
         printf("Is stack Empty %d\n", isEmpty(s));
         return 0;
-    }
+    }*/
