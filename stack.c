@@ -65,7 +65,8 @@ struct s_node {
     /***********
       Test Main
     ************/
-    /*#include <stdio.h>
+    /*
+    #include <stdio.h>
     int main (void)
     {
         struct s_stack * s = init();
