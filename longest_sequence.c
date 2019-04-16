@@ -6,7 +6,7 @@
 /*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 07:42:14 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/16 08:17:21 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/16 08:36:00 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 struct s_node 
@@ -22,10 +22,13 @@ int recursion(struct s_node *node, int parent_value, int depth)
 {
 	if(!node)
 		return 0;
-	int current = 1;
-	if(node->value == parent_value + 1)
-		current = depth + 1;
-	return MAX(MAX(recursion(node->left, node->value, current), recursion(node->right, node->value, current)), current);
+	else
+	{
+		int current = 1;
+		if(node->value == parent_value + 1)
+			current = depth + 1;
+		return MAX(MAX(recursion(node->left, node->value, current), recursion(node->right, node->value, current)), current);
+	}
 }
 
 
@@ -56,6 +59,6 @@ int main (void)
 
 	printf("The longest_sequence of the tree is: %d\n", longest_sequence(n));
 	printf("The longest_sequence of the NULL tree is: %d\n", longest_sequence(0));
-	printf("The value of ~0u >> 1 + 1 is: %d", (~0u >> 1));
+	printf("The value of ~0u >> 1 + 1 is: %d", (~0u >> 1) + 1);
 	return 0;
 }
