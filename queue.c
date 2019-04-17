@@ -12,62 +12,63 @@
 
 #include <stdlib.h>
 
-#include <stdlib.h>
+struct s_node {
+        void *content;
+        struct s_node *next;
+    };
 
-struct  s_node
-{
-    void            *content;
-    struct s_node   *next;
-};
-struct  s_queue
-{
-    struct s_node   *first;
-    struct s_node   *last;
-};
+ struct s_queue {
+        struct s_node *first;
+        struct s_node *last;
+    };
 
 struct s_queue *init(void)
 {
-	struct s_queue *q = (struct s_queue *)malloc(sizeof(struct s_queue));
-	if (!q)
-		return NULL;
-	q->first = NULL;
-	q->last = NULL;
-	return(q);
+	struct s_queue *new = (struct s_queue *)malloc(sizeof(struct s_queue));
+	new->first = NULL;
+	new->last = NULL;
+	return new;
 }
+
 void enqueue(struct s_queue *queue, void *content)
 {
-	struct s_node *new = (struct s_node *)malloc(sizeof(struct s_node));
-	new->content = content;
-	new->next = NULL;
-	
+	struct s_node *node = (struct s_node *)malloc(sizeof(struct s_node));
+	node->content = content;
+	node->next = NULL;
 	if (!queue->first)
-		queue->first = new;
-	if (queue->last)
-		queue->last->next = new;
-	queue->last = new;
+	{
+		queue->first = node;
+		queue->last = node;
+	}
+	else
+	{
+		queue->last->next = node;
+		queue->last = node;
+	}
 }
 
 void *dequeue(struct s_queue *queue)
 {
-	void *value = NULL;
-	struct s_node *temp = queue->first;
+	void *ele = NULL;
 	if (queue->first)
 	{
-		value = queue->first->content;
+		struct s_node *temp = queue->first;
+		ele = queue->first->content;
 		queue->last = (queue->first == queue->last) ? NULL : queue->last;
 		queue->first = queue->first->next;
 		free(temp);
 	}
-	return (value);
+	return ele;
 }
+
 void *peek(struct s_queue *queue)
 {
-	return (queue->first ? queue->first->content : NULL);
+	return queue->first ? queue->first->content : NULL;
 }
 
 int isEmpty(struct s_queue *queue)
 {
-	return (queue->first ? 0 : 1);
+	return queue->first ? 0 : 1;
 }
 
 /****************
@@ -76,22 +77,25 @@ int isEmpty(struct s_queue *queue)
 
 /*
 #include <stdio.h>
+
 int main(void)
 {
     struct s_queue  *q = init();
-    char            *content[][1] = {"1","2","3","4","5"};
-    for (int i = 0; i < 5; i++)
-    {
-        enqueue(q, *content[i]);
-		printf("is Empty   : %s\n", (isEmpty(q) ? "yes" : "no"));
-    }
-	printf("Peek Content : %s\n", peek(q));
-    for (int i = 5; i > 0; i--)
-    {
-        dequeue(q);
-		printf("is Empty   : %s\n", (isEmpty(q) ? "yes" : "no"));
-    }
-	printf("Peek Content : %s\n", peek(q));
-    return (0);
+	printf("The stack has been setup!!\n");
+	printf("The stack is empty: %d\n", isEmpty(q));
+	puts("putting Hello");
+	enqueue(q, "Hello");
+	printf("The stack is empty: %d\n", isEmpty(q));
+	printf("The peek of the stack is: %s\n", peek(q));
+	puts("putting World!!");
+	enqueue(q, "Wolrd!!");
+	printf("The peek of the stack is: %s\n", peek(q));
+	printf("The stack is empty: %d\n", isEmpty(q));
+	printf("The first dequeue operation is: %s\n", dequeue(q));
+	printf("The Second dequeue operation is:  %s\n", dequeue(q));
+	printf("The Third dequeue operation is %s\n", dequeue(q));
+	printf("The stack is empty: %d\n", isEmpty(q));
+	printf("The peek of the stack is: %s\n", peek(q));
+	return 0;
 }
 */
