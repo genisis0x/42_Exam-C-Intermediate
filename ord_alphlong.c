@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 19:03:11 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/17 19:03:13 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/17 19:05:58 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ void ft_print_list(t_list *node)
 
 int main (int ac, char **av)
 {
-    int i = 0, j = 0, start = 0;
+    int i = 0, l = 0, start = 0;
     if (ac == 2)
     {
         while (av[1][i])
@@ -217,14 +217,14 @@ int main (int ac, char **av)
                 i++;
             }
             start = i;
-            j = 0;
+            l = 0;
             while(!is_space_tab(av[1][i]) && is_alphanumeric(av[1][i]))
             {
-                j++;
+                l++;
                 i++;
             }
-            char *node = str_trim(av[1], start, j);
-            push(new (j, node));
+            char *node = str_trim(av[1], start, l);
+            push(new (l, node));
         }
         reverse_list(NULL, &head, NULL);
         sort_int_list(head);
