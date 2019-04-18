@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   longest_sequence.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 07:42:14 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/16 08:36:00 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/17 15:57:44 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 struct s_node 
 {
 	int value;
@@ -37,6 +38,7 @@ int	longest_sequence(struct s_node *node)
 	return recursion(node, ~0u, 0);
 }
 
+/*
 #include <stdlib.h>
 #include <stdio.h>
 struct s_node *new(int item)
@@ -62,3 +64,4 @@ int main (void)
 	printf("The value of ~0u >> 1 + 1 is: %d", (~0u >> 1) + 1);
 	return 0;
 }
+*/
