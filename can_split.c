@@ -37,7 +37,7 @@ int is_split (struct s_node *r, int *split_num, int t_nodes)
 int can_split(struct s_node *n)
 {
 	int t_nodes = total_nodes(n);
-	if (nodes % 2)
+	if (t_nodes % 2)
 		return 0;
 	int split_num = 0;
 	is_split(n, &split_num, t_nodes);
