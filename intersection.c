@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:55:22 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/23 18:03:17 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:14:31 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void *intersection(struct s_node *lst1, struct s_node *lst2)
 		if(lst1 == lst2)
 		{
 			inter = lst1;
+			break;
 		}
 		lst1 = lst1->next;
 		lst2 = lst2->next;
