@@ -53,7 +53,7 @@ char *:smiling_imp: = "Very_Good_question's";
 1.	can_split ✅
 2.	perimeter  ✅
 3.	width_tree  ✅
-4.	convert_bst -> #### Remaing
+4.	convert_bst ✅
 5.	gold_gain -> #### Remaing
 >> #### Subject Status level 4 :heavy_check_mark:
 1.	clone_list -> #### Remaing
