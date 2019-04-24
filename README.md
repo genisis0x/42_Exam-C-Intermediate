@@ -43,12 +43,12 @@ char *:smiling_imp: = "Very_Good_question's";
 3.	height_tree	✅
 4.	queue	✅
 5.	stack	✅
+6.  is_looping  ✅
 >> #### Subject Status level 2 :heavy_check_mark:
-1.	is_looping  ✅
-2.	longest_sequence ✅
-3.	ord_alphalong ✅
-4.	reverse_tree ✅
-5.	str_maxlenoc -> #### Remaing
+1.	longest_sequence ✅
+2.	ord_alphalong ✅
+3.	reverse_tree ✅
+4.	str_maxlenoc -> #### Remaing
 >> #### Subject Status level 3 :heavy_check_mark:
 1.	can_split ✅
 2.	perimeter  ✅
