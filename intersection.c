@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:55:22 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/23 17:56:44 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:03:17 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,48 @@ void *intersection(struct s_node *lst1, struct s_node *lst2)
 	{
 		if(lst1 == lst2)
 		{
-			inter = lst1->content;
+			inter = lst1;
 		}
 		lst1 = lst1->next;
 		lst2 = lst2->next;
 	}
 	return inter;
+}
+
+
+/*****************
+ 	TEST MAIN
+******************/
+
+#include <stdio.h>
+#include <stdlib.h>
+struct s_node* b(void* v) {
+	struct s_node* new = malloc(sizeof(struct s_node));
+	new->content = v;
+	new->next = 0;
+	return new;
+}
+int main() {
+	struct s_node* a = b("a");
+	a->next = b("b");
+	a->next->next = b("c");
+	a->next->next->next = b("d");
+	a->next->next->next->next = b("e");
+	a->next->next->next->next->next = b("f");
+
+	struct s_node* c = b("g");
+	c->next = b("h");
+	c->next->next = b("i");
+	c->next->next->next = b("j");
+	c->next->next->next->next = b("k");
+	c->next->next->next->next->next = b("l");
+
+	struct s_node* ret = intersection(a, c);
+	printf("%s\n", ret ? ret->content : 0);
+
+	c->next->next = a->next->next->next;
+	ret = intersection(a, c);
+	printf("%s\n", ret ? ret->content : 0);
+
+	return 0;
 }
