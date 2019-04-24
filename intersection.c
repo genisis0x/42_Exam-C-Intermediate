@@ -104,3 +104,6 @@ int main() {
 
 	return 0;
 }
+
+
+//Expected Output -> null & d
