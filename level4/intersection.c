@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:55:22 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/23 18:19:50 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:21:06 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,5 @@ int main() {
 
 	return 0;
 }
-
 
 //Expected Output -> (null) & d
