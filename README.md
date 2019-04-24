@@ -1,4 +1,4 @@
-# C--Intermediate--ExamShell--42--
+# C--42--Intermediate--ExamShell
 Repository is used for the prepration of C - Intermediate examshell in 42 School - Silicon Valley.It contains all of the Intermediate Questions and solutions to it.
 
 Solution provided are fully tested and written by me, for some problem's there are more then one solution.
