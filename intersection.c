@@ -6,11 +6,9 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:55:22 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/23 18:14:31 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:19:50 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 struct s_node {
         void *content;
@@ -30,7 +28,6 @@ int len_list(struct s_node *list)
 
 void *intersection(struct s_node *lst1, struct s_node *lst2)
 {
-	void *inter = NULL;
 	int len1 = len_list(lst1);
 	int len2 = len_list(lst2);
 
@@ -58,15 +55,13 @@ void *intersection(struct s_node *lst1, struct s_node *lst2)
 	{
 		if(lst1 == lst2)
 		{
-			inter = lst1;
-			break;
+			return lst1;
 		}
 		lst1 = lst1->next;
 		lst2 = lst2->next;
 	}
-	return inter;
+	return 0;
 }
-
 
 /*****************
  	TEST MAIN
@@ -106,4 +101,4 @@ int main() {
 }
 
 
-//Expected Output -> null & d
+//Expected Output -> (null) \ & d
