@@ -34,6 +34,7 @@ char* longest_subarray(char* arr)
     {
         res[j] = arr[i];
     }
+    res[max_len] = '\0';
     return res;
 }
 
