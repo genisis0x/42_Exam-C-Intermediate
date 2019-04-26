@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 02:26:50 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/26 03:08:40 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/26 03:23:16 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ int gold_gain(int **mine, int n)
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 int main(void)
 {
 	int side;
+	printf("Enter the side of the matrix and press enter after entering it\n");
 	scanf("%d", &side);
+	printf("Please enter each element one by one starting from 1st row and press enter after entering each element\n");
 	int **mine = (int **)malloc(sizeof(int *) * side);
 	for(int r = 0; r < side; r++)
 	{
@@ -52,6 +55,10 @@ int main(void)
 			scanf("%d", &(mine[r][c]));
 		}
 	}
+	printf("Please wait 😀😀😀😀😀😀😀\n");
+	clock_t start_time = clock();
+	while (clock() < start_time + 5000000)
+		;
 	printf("The max gold gain is: %d\n", gold_gain(mine, side));
 	return 0;
 }
