@@ -54,7 +54,7 @@ char *:smiling_imp: = "Very_Good_question's";
 2.	perimeter  ✅
 3.	width_tree  ✅
 4.	convert_bst ✅
-5.	gold_gain -> ✅ -> Done with using space complexity of O(1); :star2: :star2: :star2: :star2:
+5.	gold_gain -> ✅ -> Done with using space complexity of O(1) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
 >> #### Subject Status level 4 :heavy_check_mark:
 1.	clone_list -> #### Remaing
 2.	intersection ✅
