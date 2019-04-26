@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 02:26:50 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/26 03:23:16 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/26 03:30:19 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int gold_gain(int **mine, int n)
 	{	
 		for (r = row -1; r >= 0; r--)
 		{
-			int right = (c == col -1) ? 0 : mine[r][c + 1];
-			int right_up = (c == col -1 || r == 0) ? 0 : mine[r - 1][c + 1];
-			int right_down = (c == col -1 || r == row -1) ?  0  : mine[r + 1][c + 1];
+			int right = (c == col -1) ? 0 : mine[r][c + 1]; // to go right
+			int right_up = (c == col -1 || r == 0) ? 0 : mine[r - 1][c + 1]; // to go right_up
+			int right_down = (c == col -1 || r == row -1) ?  0  : mine[r + 1][c + 1]; // to go right_down
 
-			mine[r][c] += max(right, max(right_down, right_up));
+			mine[r][c] += max(right, max(right_down, right_up)); // updte the mine matrix and start from the bottom right and traverse by column
 		}
 	}
 	int max_gold = mine[0][0];
-	for (r = 1; r < row; r++)
+	for (r = 1; r < row; r++) // find the max in the first column and that's the answer.
 	{
 		max_gold = max(max_gold, mine[r][0]);
 	}
