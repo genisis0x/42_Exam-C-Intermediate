@@ -34,7 +34,7 @@ int gold_gain(int **mine, int n)
 	return max_gold;
 }
 /**************
-	TEST MAIN
+   TEST MAIN
 **************/
 
 #include <stdio.h>
