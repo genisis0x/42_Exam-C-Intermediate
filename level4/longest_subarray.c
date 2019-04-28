@@ -46,6 +46,6 @@ int main ()
 	scanf ("%s", s);
 	printf("Answer is : \n");
 	printf("%s\n", longest_subarray(s));
-    return 0;
+	return 0;
 }
 */
