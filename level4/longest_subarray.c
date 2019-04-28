@@ -27,21 +27,25 @@ char* longest_subarray(char* arr)
     }
     if (max_len == -1)
     {
+		char *res = (char *)malloc(sizeof(char) * (max_len + 4));
 	    res[0] = '-';
 	    res[1] = '1';
 	    res[2] = '\0';
 	    return res;
     }
-    char *res = (char *)malloc(sizeof(char) * (max_len + 1));
-    for(i = start_index, j = 0; i < max_len + start_index; i++)
-    {
-        res[j++] = arr[i];
-    }
-    res[j] = '\0';
-    return res;
+	else
+	{
+		char *res = (char *)malloc(sizeof(char) * (max_len + 1));
+		for(i = start_index, j = 0; i < max_len + start_index; i++)
+		{
+			res[j++] = arr[i];
+		}
+		res[j] = '\0';
+		return res;
+	}
 }
 
-/*
+
 #include <stdio.h>
 int main ()
 {
@@ -51,4 +55,3 @@ int main ()
 	printf("%s\n", longest_subarray(s));
 	return 0;
 }
-*/
