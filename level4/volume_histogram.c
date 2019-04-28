@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define max(a, b) a < b ? b : a
-#define min(a, b) a < b ? a : b
-
 int    volume_histogram(int *histogram, int size)
 {
 	int left_max = 0;
