@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 void  ft_count_nbr(int nb, int *count)
 {
 	if (nb >=10)
@@ -36,6 +34,8 @@ int count_of_2(int n)
 	return (count);
 }
 
+#include <stdlib.h>
+#include <stdio.h>
 int main (int ac , char **av)
 {
 	int res;
