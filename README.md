@@ -60,7 +60,7 @@ char *:smiling_imp: = "Very_Good_question's";
 2.	intersection ✅
 3.	longest_subarray -> ✅ time complexity of O(M * N)
 4.	range_comb -> #### Remaing :star2:
-5.	volume_histogram -> #### Remaing :star2:
+5.	volume_histogram -> ✅ time complexity of O(N) and Space complexity of O(1) :star2:
 >> #### Subject Status level 5 :star2: :star2: :heavy_check_mark:
 1.	count_island -> #### Remaing
 2.	g_diam -> #### Remaing :smiling_imp:
