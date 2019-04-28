@@ -3,7 +3,7 @@
 
 int odd_num(char c)
 {
-    return (!((c - '0') % 2));
+    return ((c - '0') % 2);
 }
 
 char* longest_subarray(char* arr)
@@ -30,17 +30,22 @@ char* longest_subarray(char* arr)
         return NULL;
     }
     char *res = (char *)malloc(sizeof(char) * (max_len + 1));
-    for(i = start_index, j = 0; i < max_len; i++)
+    for(i = start_index, j = 0; i < max_len + start_index; i++)
     {
-        res[j] = arr[i];
+        res[j++] = arr[i];
     }
-    res[max_len] = '\0';
+    res[j] = '\0';
     return res;
 }
 
+/*
 #include <stdio.h>
-int main (int ac, char **av)
+int main ()
 {
-    printf("%s", longest_subarray(av[1]));
+	char s[10000];
+	scanf ("%s", s);
+	printf("Answer is : \n");
+	printf("%s\n", longest_subarray(s));
     return 0;
 }
+*/
