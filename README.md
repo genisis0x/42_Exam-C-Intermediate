@@ -64,5 +64,5 @@ char *:smiling_imp: = "Very_Good_question's";
 >> #### Subject Status level 5 :star2: :star2: :heavy_check_mark:
 1.	count_island -> #### Remaing
 2.	g_diam -> #### Remaing :smiling_imp:
-3.	infin_add -> #### Remaing
+3.	infin_add -> ✅ --> time complexity O(N)
 4.  infin_mult -> #### Remaing
