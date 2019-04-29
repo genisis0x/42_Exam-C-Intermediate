@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 22:12:36 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/28 22:26:27 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/28 23:11:19 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int len(char *s)
     }
     return c;
 }
-
-
 char *ft_strcpy(char *s)
 {
     int l = len(s);
@@ -46,7 +44,6 @@ char *ft_strcpy(char *s)
     return r;
 }
 
-
 void swap(char **s1, char **s2)
 {
     char *t = *s1;
@@ -54,31 +51,40 @@ void swap(char **s1, char **s2)
     *s2 = t;
 }
 
-
 char *infin_mult(char *s1 , char *s2)
 {
-    int l1 = len(s1);
-    int l2 = len(s2);
-    char *r = (char *)malloc(sizeof(char) *(l1 * l2));
+    if (*s1 == '0' || *s2 == '0')
+        return "0";
     
+    int len1 = len(s1);
+    int len2 = len(s2);
+    int len = len1 + len2;
+    
+    int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
+    
+    for(int i = 0; i < len; i++)
+    {
+        arr[i] = 0;
+    }
+    
+    for (int i = len1 - 1; i > -1; i--)
+        for (int j = len2 - 1; j > -1; j--)
+            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0'); //collect result of each position;
+    for (int i = len - 1; i > 0; i--)                        //restore the carry for each position and get the final result;
+    {
+        arr[i - 1] += arr[i] / 10;
+        arr[i] %= 10;
+    }
+    char *s = (char *)malloc(sizeof(char) * (len + 1)); //converting the digits result to string;
+    int index = 0;
     int i = 0;
-    int carry = 0;
-
-    if(l1 > l2)
-    {
-        swap(&s1, &s2);
-        int temp = l1;
-        l1 = l2;
-        l2 = temp;
-    }
-    while()
-    {
-        
-    }
-    return r;
+    if (arr[i] == 0)
+        i++; //in case the zero position has no carry, if it does, ignore it;
+    while (i < len)
+        s[index++] = arr[i++] + '0';
+    s[index] = '\0';
+    return s;
 }
-
-
 
 int main (int ac, char **av)
 {
@@ -87,7 +93,7 @@ int main (int ac, char **av)
         int i = 0;
         char *s1 = av[1];
         char *s2 = av[2];
-        if((s1[i] == '-' && s2[i] == '-') && (s1[i] != '-' && s2[i] != '-'))
+        if((s1[i] == '-' && s2[i] == '-') || (s1[i] != '-' && s2[i] != '-'))
         {
             s1 = ft_strcpy(s1);
             s2 = ft_strcpy(s2);
