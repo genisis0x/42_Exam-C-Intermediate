@@ -42,14 +42,6 @@ char *ft_strcpy(char *s)
     }
     return r;
 }
-
-void swap(char **s1, char **s2)
-{
-    char *t = *s1;
-    *s1 = *s2;
-    *s2 = t;
-}
-
 char *infin_mult(char *s1 , char *s2)
 {
     if (*s1 == '0' || *s2 == '0')
