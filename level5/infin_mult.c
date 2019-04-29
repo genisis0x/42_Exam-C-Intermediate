@@ -6,14 +6,12 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 22:12:36 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/28 23:11:19 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/28 23:12:23 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-
-
 int len(char *s)
 {
     int c = 0;
@@ -24,6 +22,7 @@ int len(char *s)
     }
     return c;
 }
+
 char *ft_strcpy(char *s)
 {
     int l = len(s);
