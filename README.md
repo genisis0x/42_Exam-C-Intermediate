@@ -65,4 +65,4 @@ char *:smiling_imp: = "Very_Good_question's";
 1.	count_island -> #### Remaing
 2.	g_diam -> #### Remaing :smiling_imp:
 3.	infin_add -> ✅ --> time complexity O(N)
-4.  infin_mult -> #### Remaing
+4.  infin_mult -> ✅ --> time complexity O(N * M)
