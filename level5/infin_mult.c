@@ -53,7 +53,7 @@ char *infin_mult(char *s1 , char *s2)
     
     int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
     
-    for(int i = 0; i < len; i++)
+    for(int i = 0; i < len; i++) // set all the values to zero by default
     {
         arr[i] = 0;
     }
