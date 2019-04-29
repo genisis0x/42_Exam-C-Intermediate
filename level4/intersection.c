@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:55:22 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/23 18:21:06 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/29 14:32:49 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,33 @@ int len_list(struct s_node *list)
 	return count;
 }
 
+void swap(struct s_node **l1, struct s_node **l2)
+{
+	struct s_node *temp = *l1;
+	*l1 = *l2;
+	*l2 = temp;
+}
+
 void *intersection(struct s_node *lst1, struct s_node *lst2)
 {
 	int len1 = len_list(lst1);
 	int len2 = len_list(lst2);
+	int d = len2 -len1;
+	int j = 0;
 
 	if(len1 > len2)
 	{
-		int d = len1 - len2;
-		int i = 0;
-	   	while (i < d)
-		{
-			lst1 = lst1->next;
-			i++;
-		}
+		swap(&lst1, &lst2);
+		d = -d;
+		int temp = len1;
+		len1 = len2;
+		len2 = temp;
 	}
-	else if(len2 > len1)
+
+	while (j < d)
 	{
-		int d = len2 - len1;
-		int j = 0;
-		while (j < d)
-		{
-			lst2 = lst2->next;
-			j++;
-		}
+		lst2 = lst2->next;
+		j++;
 	}
 	while (lst2 && lst1)
 	{
