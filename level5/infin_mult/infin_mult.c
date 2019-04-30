@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 22:12:36 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/29 20:09:31 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/29 20:23:44 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ char *infin_mult(char *s1 , char *s2)
     int len1 = len(s1);
     int len2 = len(s2);
     int len = len1 + len2;
-    if (*s1 == '0' || *s2 == '0')
+    
+	if (*s1 == '0' || *s2 == '0')
         return "0";
-    int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
+    
+	int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
     
     for(int i = 0; i < len; i++) // set all the values to zero by default
     {
@@ -61,12 +63,14 @@ char *infin_mult(char *s1 , char *s2)
     for (int i = len1 - 1; i > -1; i--)
         for (int j = len2 - 1; j > -1; j--)
             arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0'); //collect result of each position;
-    for (int i = len - 1; i > 0; i--)                        //restore the carry for each position and get the final result;
+    
+	for (int i = len - 1; i > 0; i--)                        //restore the carry for each position and get the final result;
     {
         arr[i - 1] += arr[i] / 10;
         arr[i] %= 10;
     }
-    char *s = (char *)malloc(sizeof(char) * (len + 1)); //converting the digits result to string;
+    
+	char *s = (char *)malloc(sizeof(char) * (len + 1)); //converting the digits result to string;
     int index = 0;
     int i = 0;
     if (arr[i] == 0)
@@ -85,7 +89,8 @@ int main (int ac, char **av)
         int i = 0;
         char *s1 = av[1];
         char *s2 = av[2];
-        if((s1[i] == '-' && s2[i] == '-') || (s1[i] != '-' && s2[i] != '-'))
+        
+		if((s1[i] == '-' && s2[i] == '-') || (s1[i] != '-' && s2[i] != '-'))
         {
            	char *res = infin_mult(s1, s2);
             while (res[i])
