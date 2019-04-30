@@ -54,7 +54,7 @@ char *:smiling_imp: = "Very_Good_question's";
 2.	perimeter  ✅
 3.	width_tree  ✅
 4.	convert_bst ✅
-5.	gold_gain -> ✅ -> Done with using space complexity of O(M * N) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
+5.	gold_gain -> ✅ -> Done with using space Complexity of O(M * N) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
 >> #### Subject Status level 4 :heavy_check_mark:
 1.	clone_list -> ✅ time complexity of O(N) -> "N" no of elements in list
 2.	intersection ✅ time complexity of O(M) -> "M" highest size of list
@@ -65,4 +65,4 @@ char *:smiling_imp: = "Very_Good_question's";
 1.	count_island -> #### Remaing
 2.	g_diam -> #### Remaing :smiling_imp:
 3.	infin_add -> ✅ --> time complexity O(N)
-4.  infin_mult -> ✅ --> time complexity O(N * M)
+4.  infin_mult -> ✅ --> time complexity O(N * M)and Space Complexity of O(M + N)
