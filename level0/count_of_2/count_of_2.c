@@ -23,7 +23,6 @@ void  ft_count_nbr(int nb, int *count)
 
 int count_of_2(int n)
 {
-	int result = 0;
 	int i = 1;
 	int count = 0;
 
