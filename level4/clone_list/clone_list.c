@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 15:58:53 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/29 17:56:18 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/29 17:58:50 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,17 @@ struct s_node *clone_list(struct s_node *node)
     struct s_node *clone = new(node->data);
     struct s_node *temp_clone = clone;
     struct s_node *n = node;
+    
     while(n->next)
     {
         clone->next= new(n->next->data);
         n = n->next;
         clone = clone->next;
     }
+    
     n = node;
     clone = temp_clone;
+    
     while(n)
     {
         clone->other = n->other;
@@ -48,6 +51,10 @@ struct s_node *clone_list(struct s_node *node)
     }
     return temp_clone;
 }
+
+/********************
+  	 TEST MAIN
+*******************/
 
 #include <stdio.h>
 int main(void)
