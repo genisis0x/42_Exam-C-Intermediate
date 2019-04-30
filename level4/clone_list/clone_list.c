@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 15:58:53 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/29 17:49:32 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/29 17:56:18 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,6 @@ struct s_node {
         struct s_node *next;
         struct s_node *other;
     };
-
-int len(struct s_node *l)
-{
-    int c = 0;
-    if (l == NULL)
-        return c;
-    while(l)
-    {
-        c++;
-        l = l->next;
-    }
-    return c;
-}
-
 struct s_node *new (int data)
 {
     struct s_node *n = (struct s_node *)malloc(sizeof(struct s_node));
@@ -41,6 +27,8 @@ struct s_node *new (int data)
 }
 struct s_node *clone_list(struct s_node *node)
 {
+    if(node == NULL)
+        return 0;
     struct s_node *clone = new(node->data);
     struct s_node *temp_clone = clone;
     struct s_node *n = node;
@@ -81,5 +69,8 @@ int main(void)
         printf("%d->\n", res->data);
         res = res->next;
     }
+    res = clone_list(0);
+    if(res == 0)
+        printf("Mother Fucker!!\n");
     return 0;
 }
