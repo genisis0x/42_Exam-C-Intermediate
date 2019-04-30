@@ -56,7 +56,7 @@ char *:smiling_imp: = "Very_Good_question's";
 4.	convert_bst ✅
 5.	gold_gain -> ✅ -> Done with using space complexity of O(M * N) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
 >> #### Subject Status level 4 :heavy_check_mark:
-1.	clone_list -> #### Remaing
+1.	clone_list -> ✅ time complexity of O(N) -> "N" no of elements in list
 2.	intersection ✅ time complexity of O(M) -> "M" highest size of list
 3.	longest_subarray -> ✅ time complexity of O(M * N)
 4.	range_comb -> #### Remaing :star2:
