@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 22:12:36 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/28 23:12:23 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/04/29 20:09:31 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ char *ft_strcpy(char *s)
 }
 char *infin_mult(char *s1 , char *s2)
 {
-    if (*s1 == '0' || *s2 == '0')
-        return "0";
-    
+    s1 = ft_strcpy(s1);
+    s2 = ft_strcpy(s2);
     int len1 = len(s1);
     int len2 = len(s2);
     int len = len1 + len2;
-    
+    if (*s1 == '0' || *s2 == '0')
+        return "0";
     int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
     
     for(int i = 0; i < len; i++) // set all the values to zero by default
@@ -74,6 +74,7 @@ char *infin_mult(char *s1 , char *s2)
     while (i < len)
         s[index++] = arr[i++] + '0';
     s[index] = '\0';
+	free(arr);
     return s;
 }
 
@@ -86,9 +87,7 @@ int main (int ac, char **av)
         char *s2 = av[2];
         if((s1[i] == '-' && s2[i] == '-') || (s1[i] != '-' && s2[i] != '-'))
         {
-            s1 = ft_strcpy(s1);
-            s2 = ft_strcpy(s2);
-            char *res = infin_mult(s1, s2);
+           	char *res = infin_mult(s1, s2);
             while (res[i])
             {
                 write(1, &res[i++], 1);
@@ -96,9 +95,8 @@ int main (int ac, char **av)
         }
         else
         {
-            write(1, "-", 1);
-            s1 = ft_strcpy(s1);
-            s2 = ft_strcpy(s2);
+            if (*s1 != '0' && *s2 != '0')
+                write(1, "-", 1);
             char *res = infin_mult(s1, s2);
             while (res[i])
             {
