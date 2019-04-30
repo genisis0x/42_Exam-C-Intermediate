@@ -27,10 +27,8 @@ char* longest_subarray(char* arr)
     }
     if (max_len == -1)
     {
-		char *res = (char *)malloc(sizeof(char) * (max_len + 4));
-	    res[0] = '-';
-	    res[1] = '1';
-	    res[2] = '\0';
+		char *res = (char *)malloc(sizeof(char) * (1));
+	    res[0] = '\0';
 	    return res;
     }
 	else
@@ -52,6 +50,6 @@ int main ()
 	char s[10000];
 	scanf ("%s", s);
 	printf("Answer is : \n");
-	printf("%s\n", longest_subarray(s));
+	printf("%s", longest_subarray(s));
 	return 0;
 }
