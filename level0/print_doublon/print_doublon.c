@@ -28,7 +28,8 @@ void print_doublon(int *a, int na, int *b, int nb)
     printf("\n");
 }
 
-/*int main (void)
+/*
+int main (void)
 {
     int a[] = {-5, 2, 10, 15, 50, 70, 100, 200, 300, 1200, 5000};
     int na = 11;
@@ -36,4 +37,5 @@ void print_doublon(int *a, int na, int *b, int nb)
     int nb = 1;
     print_doublon(a, na, b, nb);
     return 0;
-}*/
+}
+*/
