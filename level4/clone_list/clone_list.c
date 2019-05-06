@@ -17,40 +17,62 @@ struct s_node {
         struct s_node *next;
         struct s_node *other;
     };
-struct s_node *new (int data)
+
+struct s_node *head = NULL;
+
+struct s_node *new(int data)
 {
-    struct s_node *n = (struct s_node *)malloc(sizeof(struct s_node));
-    n->data = data;
-    n->next = NULL;
+	struct s_node *n = (struct s_node *)malloc(sizeof(struct s_node));
+	n->data = data;
+	n->next = NULL;
     n->other = NULL;
     return n;
 }
+
 struct s_node *clone_list(struct s_node *node)
 {
     if(node == NULL)
         return 0;
-    struct s_node *clone = new(node->data);
-    struct s_node *temp_clone = clone;
     struct s_node *n = node;
-    
-    while(n->next)
-    {
-        clone->next= new(n->next->data);
-        n = n->next;
-        clone = clone->next;
-    }
-    
-    n = node;
-    clone = temp_clone;
     
     while(n)
     {
-        clone->other = n->other;
-        n= n->next;
-        clone = clone->next; 
+    	if(head == NULL)
+    		head = new(n->data);
+		else
+			head->next = new(n->data);
+		n = n->next;
+	}
+    
+    n = node;
+    struct s_node *clone = head;
+    while(n)
+    {
+    	n->next = clone;
+    	clone = clone->next;
+    	if(n)
+    		n = n->next; 
     }
-    return temp_clone;
+    
+    n = node;
+    clone = head;
+    while(n)
+    {
+    	clone->other = n;
+    	clone = clone->next;
+    	n =n->next;
+    }
+    n = node;
+    clone = head;
+    while(clone)
+    {
+    	if(clone->other->other->next) clone->other = clone->other->other->next;
+    	clone = clone->next;
+    }
+    return head;
 }
+
+
 
 /********************
   	 TEST MAIN
@@ -76,8 +98,8 @@ int main(void)
         printf("%d->\n", res->data);
         res = res->next;
     }
-    res = clone_list(0);
-    if(res == 0)
-        printf("Mother Fucker!!\n");
+    // res = clone_list(0);
+    // if(res == 0)
+    //     printf("Mother Fucker!!\n");
     return 0;
 }
