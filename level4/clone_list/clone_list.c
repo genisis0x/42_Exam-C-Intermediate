@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clone_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/07 01:54:39 by maparmar          #+#    #+#             */
+/*   Updated: 2019/05/07 02:01:46 by maparmar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-typedef struct s_node {
+struct s_node {
     int           data;
     struct s_node *next;
     struct s_node *other;
-} Node;
+};
 
-Node* clone_list(Node* node) {
+struct s_node *clone_list(struct s_node *node) {
 
     if (!node)
         return 0;
 
-    Node* original = node;
-    Node* temp;
+    struct s_node *original = node;
+    struct s_node *temp;
 
     // Clone list in-between original
     while (original) {
         temp = original->next;
-        original->next = malloc(sizeof(Node));
+        original->next = (struct s_node *)malloc(sizeof(struct s_node));
         original->next->data = original->data;
         original->next->other = 0;
         original->next->next = temp;
@@ -37,8 +49,8 @@ Node* clone_list(Node* node) {
     }
 
     original = node;
-    Node* copy = node->next;
-    Node* copyHead = copy;
+    struct s_node* copy = node->next;
+    struct s_node* copyHead = copy;
 
     while (original && copy) {
         if (original->next)
@@ -55,16 +67,17 @@ Node* clone_list(Node* node) {
   Test Main
 ************/
 
+/*
 #include <stdio.h>
-Node* b(int v) {
-    Node* new = malloc(sizeof(Node));
+struct s_node *b(int v) {
+    struct s_node *new = (struct s_node *)malloc(sizeof(struct s_node));
     new->data = v;
     new->next = 0;
     new->other = 0;
     return new;
 }
 int main() {
-    Node* a = b(1);
+    struct s_node *a = b(1);
     a->next = b(2);
     a->next->next = b(3);
     a->next->next->next = b(4);
@@ -72,20 +85,20 @@ int main() {
     a->next->next->next->next->next = b(6);
     a->next->next->next->next->next->next = b(7);
 
-    Node* a2 = a->next;
-    Node* a3 = a2->next;
-    Node* a4 = a3->next;
-    Node* a5 = a4->next;
-    Node* a6 = a5->next;
-    Node* a7 = a6->next;
+    struct s_node* a2 = a->next;
+    struct s_node* a3 = a2->next;
+    struct s_node* a4 = a3->next;
+    struct s_node* a5 = a4->next;
+    struct s_node* a6 = a5->next;
+    struct s_node* a7 = a6->next;
 
     a2->other = a7;
     a3->other = a;
     a5->other = a5;
     a7->other = a4;
 
-    Node* clone = clone_list(a);
-    Node* original = a;
+    struct s_node *clone = clone_list(a);
+    struct s_node *original = a;
     puts("Original:");
     while (original) {
         printf("Val: %d | Other: %d\n", original->data, original->other ? original->other->data : -1);
@@ -97,4 +110,4 @@ int main() {
         clone = clone->next;
     }
     return 0;
-}
+}*/
