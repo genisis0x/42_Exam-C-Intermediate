@@ -236,3 +236,65 @@ int main (int ac, char **av)
     }
     return 0;
 }
+
+/**************************************** GOOD TEST CASES *************************************/
+
+// TEST CASE1: 
+/*Input:
+"a why thrast my pimple pow pew allegiance deer menise euhemeristic sarge or brigatry antialbumid oars gif \
+phthisicky a fore lash champing thule moody a detoxify fem a logs uh sprit tower ha beudanite inlet sat bedebt \
+menses ya consulates beau red pawl chartographically egg mia ghazi mispled damper ped autoput lawless fireplug \
+see boil bargehouse counterplan en off boiserie a bundy frugs sidder fishy ok ack \
+clue selah brim oxygen a footsies tome closh oleraceous dam tug on bauge glood depolariser"
+
+Output:
+a a a a a a$
+en ha my ok on or uh ya$
+ack dam egg fem gif mia off ped pew pow red sat see tug why$
+beau boil brim clue deer fore lash logs oars pawl tome$
+bauge bundy closh fishy frugs ghazi glood inlet moody sarge selah sprit thule tower$
+bedebt damper menise menses oxygen pimple sidder thrast$
+autoput lawless mispled$
+boiserie brigatry champing detoxify fireplug footsies$
+beudanite$
+allegiance bargehouse consulates oleraceous phthisicky$
+antialbumid counterplan depolariser$
+euhemeristic$
+chartographically$
+*/
+
+// TEST CASE2: 
+/*Input:
+"kohlrabies aghas tv sued ox retry gardant bulk cornetter putt gruesome whelk centenary decd bite \
+capo in ok lax empaled ox saga um bandboxical ugh cephalomotor becassine boletaceous sees alkanet \
+friarbird a pucker entour beautifiers guenons tod arracacha porus"
+
+Output:
+a$
+in ok ox ox tv um$
+lax tod ugh$
+bite bulk capo decd putt saga sees sued$
+aghas porus retry whelk$
+entour pucker$
+alkanet empaled gardant guenons$
+gruesome$
+arracacha becassine centenary cornetter friarbird$
+kohlrabies$
+bandboxical beautifiers boletaceous$
+cephalomotor$
+*/
+
+// TEST CASE3: 
+/*Input:
+"lorem ipsum dolor sit amet consectetur adipiscing elit curabitur sollicitudin pretium nibh"
+
+Output:
+sit$
+amet elit nibh$
+dolor ipsum lorem$
+pretium$
+curabitur$
+adipiscing$
+consectetur$
+sollicitudin$
+*/
