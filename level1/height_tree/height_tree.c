@@ -18,7 +18,7 @@ struct s_node {
 int height_tree(struct s_node *root)
 {
 	static int height = 0;
-	static int i = 0;
+	int i = 0;
 	if (!root)
 		return -1;
 	else
