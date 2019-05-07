@@ -39,7 +39,7 @@ void perimeter(struct s_node *root)
 
 	printf("\n");
 }
-#include <stdio.h>
+
 #include <stdlib.h>
 
 struct s_node *new(int item)
