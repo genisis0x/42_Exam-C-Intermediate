@@ -10,14 +10,6 @@ int len(char *s)
     }
     return c;
 }
-
-void swap(char **s1, char **s2)
-{
-    char *temp = *s1;
-    *s1 = *s2;
-    *s2 = temp;
-}
-
 int ft_strcmp(char *s1, char *s2)
 {
     while((*s1 || *s2) != 0)
@@ -30,6 +22,13 @@ int ft_strcmp(char *s1, char *s2)
         return *s1 - *s2;
     }
     return 0;
+}
+
+void swap(char **s1, char **s2)
+{
+    char *temp = *s1;
+    *s1 = *s2;
+    *s2 = temp;
 }
 
 void infi_add(char *s1, char *s2, int l1, int l2)
@@ -132,57 +131,54 @@ int main(int ac, char **av)
         char *s2 = av[2];
         int lens1 = len(s1);
         int lens2 = len(s2);
-        if(lens1 >= lens2)
+
+        if(lens1 > lens2)
         {
             swap(&s1, &s2);
             int temp = lens1;
             lens1 = lens2;
             lens2 = temp;
         }
-        if((*s1 != '-' && *s2 != '-') || (*s1 == '-' && *s2 == '-'))
-        {
-            if(*s1 == '-' && *s2 == '-')
-            {
-                s1++;
-                s2++;
-                write(1, "-", 1);
-            }
-            infi_add(s1, s2, lens1, lens2);
-        }
-        else
+        if(*s1 == '-')
         {
             if(*s2 == '-')
             {
-                s2++;
-                if(lens1 == lens2 && ft_strcmp(s1, s2) > 0)
-                    ;
-                else
-                    write(1, "-", 1);
-                if(ft_strcmp(s1, s2) == 0)
-                {
-                    write(1, "0\n", 2);
-                    return 0;
-                }
-            }   
+                s1++, s2++;
+                write(1, "-", 1);
+                infi_add(s1, s2, lens1, lens2);
+            }
             else
             {
                 s1++;
-                if(lens1 == lens2 && ft_strcmp(s1, s2) > 0)
-                {
-                    write(1, "-", 1);
-                    swap(&s1, &s2);
-                    int temp = lens1;
-                    lens1 = lens2;
-                    lens2 = temp;
-                }
-                if(ft_strcmp(s1, s2) == 0)
+                if(ft_strcmp(s1, s2) == 0 && lens1 == lens2)
                 {
                     write(1, "0\n", 2);
                     return 0;
                 }
+                if(ft_strcmp(s1, s2) > 0 && lens1 == lens2)
+                    write(1, "-", 1);
+                infi_sub(s1, s2, lens1, lens2);
             }
-        infi_sub(s1, s2, lens1, lens2);
         }
+        else if(*s2 == '-')
+        {
+            s2++;
+            if(ft_strcmp(s1, s2) == 0 && lens1 == lens2)
+                {
+                    write(1, "0\n", 2);
+                    return 0;
+                }
+            if(ft_strcmp(s1, s2) > 0 && lens1 == lens2)
+                ;
+            else
+                write(1, "-", 1);
+            infi_sub(s1, s2, lens1, lens2);
+        }
+        else
+        {
+            infi_add(s1, s2, lens1, lens2);
+        }
+        
         write(1, "\n", 1);
     }
     return 0;
