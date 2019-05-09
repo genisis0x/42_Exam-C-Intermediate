@@ -19,22 +19,22 @@ char    *longest_subarray(char *arr)
         sum = (is_odd(arr[i])) ? -1 : 1;
         for(j = i + 1; j < len; j++)
         {
-            sum += (is_odd(arr[j])) ? -1 : 1;
+            sum += (is_odd(arr[j])) ? -1 : 1; // add '-1' if number is odd and '+1' if the number is even.
 
-            if(sum == 0 && max_len < j - i + 1)
+            if(sum == 0 && max_len < j - i + 1) // update max_len & start_index, if the sum is zero and the max_len is less then the current max_len
             {
                 max_len = j - i + 1;
                 start_index = i;
             }
         }
     }
-    if(max_len == -1)
+    if(max_len == -1) // if the max_len is unchanged -> No valid String // just return "0" 
     {
         char *r = (char *)malloc(sizeof(char) * 1);
         r[0] = '\0';
         return r;
     }
-    char *r = (char *)malloc(sizeof(char) * (max_len + 1));
+    char *r = (char *)malloc(sizeof(char) * (max_len + 1)); // calculate the desired string and return it.
     for(i = start_index, j = 0; i < max_len + start_index; i++, j++)
         r[j] = arr[i];
     r[j] = '\0';
