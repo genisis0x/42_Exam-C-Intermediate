@@ -101,7 +101,7 @@ int main()
     a->right->left = new(15);
     struct s_node *c = a;
     p(c);
-    printf("-----------------------------\n\n");
+    printf("-----------------------------\n cir Doub linklist: \n");
     struct s_node *r = convert_bst(a);
     int i = 0;
     while (i++ < 15)
@@ -110,3 +110,29 @@ int main()
         r = r->right;
     }
 }
+
+/* OUTPUT: 3
+6
+9
+12
+15
+18
+20
+-----------------------------
+ cir Doub linklist:
+3
+6
+9
+12
+15
+18
+20
+3
+6
+9
+12
+15
+18
+20
+3
+*/
