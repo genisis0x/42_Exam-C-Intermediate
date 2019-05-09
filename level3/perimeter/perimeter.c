@@ -35,8 +35,8 @@ void perimeter_node(struct s_node *root)
 
 void perimeter(struct s_node *root)
 {
-	if(!root)
-		return; 
+	if(!root) return;
+	
 	if (root) printf("%d", root->value);
 
 	if(root->left) {perimeter_left(root->left); perimeter_node(root->left);}
