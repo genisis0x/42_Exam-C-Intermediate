@@ -3,113 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   convert_bst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 18:23:53 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/23 20:24:53 by maparmar         ###   ########.fr       */
+/*   Created: 2019/05/07 09:53:17 by exam              #+#    #+#             */
+/*   Updated: 2019/05/07 09:53:19 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+	struct s_node {
+		int           value;
+		struct s_node *right;
+		struct s_node *left;
+	};
 
-struct s_node {
-        int           value;
-        struct s_node *right;
-        struct s_node *left;
-    };
-
-void bst_recursion(struct s_node *root, struct s_node *min, struct s_node *max)
+void help(struct s_node *r, struct s_node *mi, struct s_node *ma)
 {
-	if(!root)
-		return ;
-	static struct s_node *prev = 0;
-	
-	// 1st step
-	if (root != min)
-		bst_recursion(root->left, min, max); 
-	
-	// 2nd step
-	if(prev)
-	{
-		root->left = prev;
-		prev->right = root;
-	}
-	prev = root;
-	
-	// 3rd Step
-	if (root != max)
-		bst_recursion(root->right, min, max);
+    static struct s_node *p = 0;
+    if(r->left && r != mi)
+        help(r->left, mi, ma);
+    if(p)
+    {
+        p->right = r;
+        r->left = p;
+    }
+    p = r;
+    if(r->right && r != ma)
+        help(r->right, mi, ma);
+    return ;
 }
 
-struct s_node *bst_min(struct s_node *r)
+struct s_node *min(struct s_node *l)
 {
-	while(r->left)
-		r = r->left;
-	return r;
+    while(l->left)
+    {
+        l = l->left;
+    }
+    return l;
 }
-struct s_node *bst_max(struct s_node *r)
+
+struct s_node *max(struct s_node *v)
 {
-	while (r->right)
-		r = r->right;
-	return r;
+    while(v->right)
+    {
+        v = v->right;
+    }
+    return v;
 }
+
 
 struct s_node *convert_bst(struct s_node *bst)
 {
-	struct s_node *min_val;
-	struct s_node *max_val;
-	if (!bst)
-		return (bst);
-	min_val = bst_min(bst);
-	max_val = bst_max(bst);
-	min_val->left = max_val;
-	max_val->right = min_val;
-	bst_recursion(bst, min_val, max_val);
-	return min_val;
-}
 
-/****************
-	TEST MAIN
-****************/
+    struct s_node *min_val;
+    struct s_node *max_val;
+    if(!bst)
+        return 0;
+    min_val = min(bst);
+    max_val = max(bst);
+    min_val->left = max_val;
+    max_val->right = min_val;
+    help(bst, min_val, max_val);
+    return min_val;
+}
+/**********
+TEST MAIN
+********/
 
 #include <stdlib.h>
 #include <stdio.h>
-struct s_node *b(int v)
+struct s_node *new(int d)
 {
-	struct s_node *new = malloc(sizeof(struct s_node));
-	new->value = v;
-	new->left = new->right = 0;
-	return new;
+    struct s_node *n =(struct s_node *)malloc(sizeof(struct s_node));
+    n->value =d;
+    n->left = NULL;
+    n->right = NULL;
+    return n;
+}
+
+void p(struct s_node *r)
+{
+    if(!r)
+        return ;
+    p(r->left);
+    printf("%d\n", r->value);
+    p(r->right);
 }
 int main()
 {
-	struct s_node *r = b(8);
-	r->left = b(4);
-	r->left->left = b(2);
-	r->left->left->left = b(1);
-	r->left->left->right = b(3);
+    struct s_node *a = new(12);
+    a->left = new(6);
+    // a->left->left = new(3);
+    // a->left->right = new(9);
 
-	r->left->right = b(6);
-	r->left->right->left = b(5);
-	r->left->right->right = b(7);
-
-	r->right = b(12);
-	r->right->left = b(10);
-	r->right->left->left = b(9);
-	r->right->left->right = b(11);
-
-	r->right->right = b(14);
-	r->right->right->left = b(13);
-	r->right->right->right = b(15);
-
-	r = convert_bst(r);
-	for (int i = 0; i < 15; i++)
-	{
-		printf("%d\n", r->value);
-		r = r->right;
-	}
-	for (int i = 0; i < 17; i++)
-	{
-		printf("%d\n", r->value);
-		r = r->left;
-	}
+    // a->right = new(18);
+    // a->right->right = new(20);
+    // a->right->left = new(15);
+    struct s_node *c = a;
+    p(c);
+    printf("-----------------------------\n\n");
+    struct s_node *r = convert_bst(a);
+    int i = 0;
+    while (i++ < 15)
+    {
+        printf("%d\n", r->value);
+        r = r->right;
+    }
 }
