@@ -12,7 +12,7 @@ int len(char *s)
 }
 int ft_strcmp(char *s1, char *s2)
 {
-    while((*s1 || *s2) != 0)
+    while(*s1 && *s2)
     {
         if(*s1 == *s2)
         {
@@ -58,7 +58,7 @@ void infi_add(char *s1, char *s2, int l1, int l2)
         arr[0] = carry;
     }
     i = 0;
-    while(arr[i] == 0)
+    while(arr[i] == 0 && i < l2)
         i++;
     if (i == l2)
     {
@@ -110,7 +110,7 @@ void infi_sub(char *s1, char *s2, int l1, int l2)
         
     }
     i = 0;
-    while(arr[i] == 0)
+    while(arr[i] == 0 && i < l2)
         i++;
     if (i == l2)
     {
@@ -139,6 +139,7 @@ int main(int ac, char **av)
             lens1 = lens2;
             lens2 = temp;
         }
+
         if(*s1 == '-')
         {
             if(*s2 == '-')
@@ -175,10 +176,7 @@ int main(int ac, char **av)
             infi_sub(s1, s2, lens1, lens2);
         }
         else
-        {
             infi_add(s1, s2, lens1, lens2);
-        }
-        
         write(1, "\n", 1);
     }
     return 0;
