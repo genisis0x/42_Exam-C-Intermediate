@@ -10,110 +10,124 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/********************************** ### Passed Exam Version ### *************************************/
+
 #include <unistd.h>
 #include <stdlib.h>
-int len(char *s)
+
+int ft_strlen(char *s)
 {
-    int c = 0;
-    while(*s)
+    int c = 0, i = 0;
+    while(s[i])
     {
-        s++;
-        c++;
+        if(s[i] == '-')
+        {
+            i++;
+        }
+        else
+        {
+            c++;
+            i++;
+        }
     }
     return c;
 }
 
-char *ft_strcpy(char *s)
+char *ft_str_cpy(char *s)
 {
-    int l = len(s);
-    int i = 0; 
-    char *r = (char *)malloc(sizeof(char) * (l + 1));
-    while(*s)
+    int i = 0, j = 0;
+    char *res = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+    while(s[j])
     {
-        if(*s == '-')
+        if(s[j] == '-')
         {
-            s++;
+            j++;
         }
         else
         {
-            r[i++] = *s;
-            s++;
+            res[i] = s[j];
+            j++;
+            i++;
         }
     }
-    r[i] = '\0';
-    return r;
+    res[i] = '\0';
+    return res;
 }
-char *infin_mult(char *s1 , char *s2)
+
+char *infin_mult(char *s1, char *s2)
 {
-    s1 = ft_strcpy(s1);
-    s2 = ft_strcpy(s2);
-    int len1 = len(s1);
-    int len2 = len(s2);
+    s1 = ft_str_cpy(s1);
+    s2 = ft_str_cpy(s2);
+
+    if(*s1 == '0' || *s2 == '0')
+        return "0";
+    int len1 = ft_strlen(s1);
+    int len2 = ft_strlen(s2);
     int len = len1 + len2;
     
-	if (*s1 == '0' || *s2 == '0')
-        return "0";
-    
-	int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
-    
-    for(int i = 0; i < len; i++) // set all the values to zero by default
+    int i, j;
+    int *arr = (int *)malloc(sizeof(int) * len);
+    for(i = 0; i < len; i++)
     {
         arr[i] = 0;
     }
-    
-    for (int i = len1 - 1; i > -1; i--)
-        for (int j = len2 - 1; j > -1; j--)
-            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0'); //collect result of each position;
-    
-	for (int i = len - 1; i > 0; i--)                        //restore the carry for each position and get the final result;
+    for(i = len1 - 1; i >= 0; i--)
+        for(j = len2 - 1; j >= 0; j--)
+        {
+            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0');
+        }
+    for(i = len - 1; i > 0; i--)
     {
         arr[i - 1] += arr[i] / 10;
         arr[i] %= 10;
     }
-    
-	char *s = (char *)malloc(sizeof(char) * (len + 1)); //converting the digits result to string;
-    int index = 0;
-    int i = 0;
-    if (arr[i] == 0)
-        i++; //in case the zero position has no carry, if it does, ignore it;
-    while (i < len)
-        s[index++] = arr[i++] + '0';
-    s[index] = '\0';
-	free(arr);
-    return s;
+    char *r = (char *)malloc(sizeof(char) * (len + 1));
+    i = 0;
+    j = 0;
+    while (arr[i] == 0)
+        i++;
+    while(i < len)
+    {
+        r[j] = arr[i] + '0';
+        i++;
+        j++;
+    }
+    r[j] = '\0';
+    return r;
 }
 
 int main (int ac, char **av)
 {
+     
     if(ac == 3)
     {
-        int i = 0;
         char *s1 = av[1];
         char *s2 = av[2];
-        
-		if((s1[i] == '-' && s2[i] == '-') || (s1[i] != '-' && s2[i] != '-'))
+        if((*s1 == '-' && *s2 == '-') || (*s1 != '-' && *s2 != '-'))
         {
-           	char *res = infin_mult(s1, s2);
-            while (res[i])
+            char *r = infin_mult(s1, s2);
+            while(*r)
             {
-                write(1, &res[i++], 1);
+                write(1, r, 1);
+                r++;
             }
         }
         else
         {
-            if (*s1 != '0' && *s2 != '0')
+            s1 = ft_str_cpy(s1);
+            s2 = ft_str_cpy(s2);
+            if(*s1 != '0' && *s2 != '0')
                 write(1, "-", 1);
-            char *res = infin_mult(s1, s2);
-            while (res[i])
+            char *r = infin_mult(s1, s2);
+            while(*r)
             {
-                write(1, &res[i++], 1);
+                write(1, r, 1);
+                r++;
             }
         }
     }
     write(1, "\n", 1);
-    return 0;
 }
-
 
 // // Good TEST CASES
 
