@@ -13,6 +13,7 @@ char    *longest_subarray(char *arr)
     int i, j;
     int sum = 0, start_index, max_len = -1;
     int len = strlen(arr);
+    
     for(i = 0; i < len -1; i++)
     {
         sum = (is_odd(arr[i])) ? -1 : 1;
@@ -35,9 +36,7 @@ char    *longest_subarray(char *arr)
     }
     char *r = (char *)malloc(sizeof(char) * (max_len + 1));
     for(i = start_index, j = 0; i < max_len + start_index; i++, j++)
-    {
         r[j] = arr[i];
-    }
     r[j] = '\0';
     return r;
 }
