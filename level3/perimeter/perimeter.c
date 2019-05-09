@@ -9,28 +9,34 @@ struct s_node {
 
 void perimeter_left(struct s_node *root)
 {
-	if(!root) return;
-	
-	else printf(" %d", root->value); perimeter_left(root->left);
+	if(root->left || root->right)
+		printf(" %d", root->value);
+	if(root->left)
+		perimeter_left(root->left);
 }
-
 
 void perimeter_right(struct s_node *root)
 {
-	if(root->right) perimeter_right(root->right); printf(" %d", root->value);
+	if(!root)
+		return;
+	if (root->right || root->left)
+		perimeter_right(root->right);
+	if(root->right || (!root->right && root->left))
+		printf(" %d", root->value);
 }
-
 void perimeter_node(struct s_node *root)
 {
 	if (root->left) perimeter_node(root->left);
-	
+
 	if(root->right) perimeter_node(root->right);
-	
+
 	if(!root->left && !root->right) printf(" %d", root->value);
 }
 
 void perimeter(struct s_node *root)
 {
+	if(!root)
+		return;
 	if (root) printf("%d", root->value);
 
 	if(root->left) perimeter_left(root->left); perimeter_node(root->left);
@@ -41,6 +47,8 @@ void perimeter(struct s_node *root)
 }
 
 #include <stdlib.h>
+#include "stdio.h"
+#include "stdlib.h"
 
 struct s_node *new(int item)
 {
@@ -60,6 +68,8 @@ int main (void)
 
 	node->left->left = new(79);
 
+	//node->left->left->left = new(200);
+	//node->left->left->left->left = new(300);
 	node->left->left->right = new(10);
 
 	node->left->left->right->left = new(39);
@@ -103,6 +113,7 @@ int main (void)
 	node->right->right->right->left->right->left = new(99);
 
 	node->right->right->right->right->right = new(51);
+	//node->right->right->right->right->right->left = new(100);
 
 	perimeter(node);
 	return 0;
