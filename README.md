@@ -31,13 +31,13 @@ Any suggestion's will be highly appreciated. -_-
 char *:star2: = "Good_Question's";\
 char *:smiling_imp: = "Very_Good_question's";
 
->> #### Subject Status level 0 :heavy_check_mark:
+>> #### Subject Status level 0 :heavy_check_mark: :100:
 1.  count_of_2	✅
 2.	equation	✅
 3.	find_pivot	✅
 4.	is_anagram	✅
 5.	print_doublon	✅
->> #### Subject	Status level 1 :heavy_check_mark:
+>> #### Subject	Status level 1 :heavy_check_mark: :100:
 1.	count_alpha	✅
 2.	flood_fill	✅
 3.	height_tree	✅
@@ -49,13 +49,13 @@ char *:smiling_imp: = "Very_Good_question's";
 3.	reverse_tree ✅
 4.	str_maxlenoc -> #### Remaing
 5.  is_looping  ✅
->> #### Subject Status level 3 :heavy_check_mark:
+>> #### Subject Status level 3 :heavy_check_mark: :100:
 1.	can_split ✅
 2.	perimeter  ✅
 3.	width_tree  ✅
 4.	convert_bst ✅
 5.	gold_gain -> ✅ -> Done with using space Complexity of O(M * N) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
->> #### Subject Status level 4 :heavy_check_mark:
+>> #### Subject Status level 4 :heavy_check_mark: :100:
 1.	clone_list -> ✅ time complexity of O(N) -> "N" no of elements in list
 2.	intersection ✅ time complexity of O(M) -> "M" highest size of list
 3.	longest_subarray -> ✅ time complexity of O(M * N)
