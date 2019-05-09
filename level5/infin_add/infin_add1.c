@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
+
 int len(char *s)
 {
     int i, c = 0;
@@ -10,6 +10,7 @@ int len(char *s)
     }
     return c;
 }
+
 int ft_strcmp(char *s1, char *s2)
 {
     while(*s1 && *s2)
@@ -58,9 +59,9 @@ void infi_add(char *s1, char *s2, int l1, int l2)
         arr[0] = carry;
     }
     i = 0;
-    while(arr[i] == 0 && i < l2)
+    while(arr[i] == 0 && i <= l2)
         i++;
-    if (i == l2)
+    if (i == l2 + 1)
     {
         write(1, "0", 1);
         return;
@@ -93,7 +94,7 @@ void infi_sub(char *s1, char *s2, int l1, int l2)
         {
             carry = 0;
         }
-        
+
     }
     for(i = l2 - l1 - 1; i >= 0; i--)
     {
@@ -107,7 +108,7 @@ void infi_sub(char *s1, char *s2, int l1, int l2)
         {
             carry = 0;
         }
-        
+
     }
     i = 0;
     while(arr[i] == 0 && i < l2)
@@ -157,7 +158,13 @@ int main(int ac, char **av)
                     return 0;
                 }
                 if(ft_strcmp(s1, s2) > 0 && lens1 == lens2)
+                {
+                    swap(&s1, &s2);
+                    int temp = lens1;
+                    lens1 = lens2;
+                    lens2 = temp;
                     write(1, "-", 1);
+                }
                 infi_sub(s1, s2, lens1, lens2);
             }
         }
@@ -170,7 +177,12 @@ int main(int ac, char **av)
                     return 0;
                 }
             if(ft_strcmp(s1, s2) > 0 && lens1 == lens2)
-                ;
+            {
+                swap(&s1, &s2);
+                int temp = lens1;
+                lens1 = lens2;
+                lens2 = temp;
+            }
             else
                 write(1, "-", 1);
             infi_sub(s1, s2, lens1, lens2);
@@ -181,14 +193,3 @@ int main(int ac, char **av)
     }
     return 0;
 }
-
-
-
-// Test Case:
-/*
-Input: "-4495409524185401471245" "1320806358203958045104122132132146"
-Output: 1320806358199462635579936730660901$
-
-Input: "4894398524132130" "5906754239"
-Output: 4894404430886369$
-*/
