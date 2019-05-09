@@ -14,7 +14,6 @@ int find_pivot(int *arr, int n)
 {
 	int total_sum = 0;
 	int remain_sum = 0;
-	int pivot = -1;
 	for (int i = 0; i < n; i++)
 		total_sum += arr[i];
 	for (int i = 0; i < n; i++)
