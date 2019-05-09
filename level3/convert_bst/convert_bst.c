@@ -9,7 +9,6 @@
 /*   Updated: 2019/05/09 06:47:25 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 struct s_node {
     int           value;
     struct s_node *right;
@@ -19,37 +18,32 @@ struct s_node {
 void help(struct s_node *r, struct s_node *mi, struct s_node *ma)
 {
     static struct s_node *p = 0;
-    if(r->left && r != mi)
-        help(r->left, mi, ma);
+    
+    if(r->left && r != mi) {help(r->left, mi, ma);}
+    
     if(p)
-    {
-        p->right = r;
-        r->left = p;
-    }
+    { p->right = r; r->left = p;}
+    
     p = r;
-    if(r->right && r != ma)
-        help(r->right, mi, ma);
+    
+    if(r->right && r != ma) {help(r->right, mi, ma);}
     return ;
 }
 
 struct s_node *min(struct s_node *l)
 {
-    while(l->left)
-        l = l->left;
+    while(l->left) {l = l->left;}
     return l;
 }
 
 struct s_node *max(struct s_node *v)
 {
-    while(v->right)
-        v = v->right;
+    while(v->right) {v = v->right;}
     return v;
 }
 
-
 struct s_node *convert_bst(struct s_node *bst)
 {
-
     struct s_node *min_val;
     struct s_node *max_val;
     if(!bst)
