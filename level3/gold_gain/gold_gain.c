@@ -23,7 +23,7 @@ int gold_gain(int **mine, int n)
 			int right_up = (c == col -1 || r == 0) ? 0 : mine[r - 1][c + 1]; // to go right_up
 			int right_down = (c == col -1 || r == row -1) ?  0  : mine[r + 1][c + 1]; // to go right_down
 
-			mine[r][c] += max(right, max(right_down, right_up)); // updte the mine matrix and start from the bottom right and traverse by column
+			mine[r][c] += max(right, max(right_down, right_up)); // update the mine matrix and start from the bottom right and traverse by column
 		}
 	}
 	int max_gold = mine[0][0];
