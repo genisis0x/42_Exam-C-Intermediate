@@ -66,6 +66,9 @@ struct s_node *convert_bst(struct s_node *bst)
     return min_val;
 }
 
+/******************
+    TEST MAIN
+******************/
 
 #include <stdlib.h>
 #include <stdio.h>
