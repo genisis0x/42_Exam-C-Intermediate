@@ -9,10 +9,10 @@ struct s_node {
 
 void perimeter_left(struct s_node *root)
 {
-	if(root)
-		return ;
+	if(!root)
+		return;
 	if(root->left || root->right)
-		printf(" %d", root->value);
+		printf(" %d", root->value); 
 	if(root->left)
 		perimeter_left(root->left);
 }
@@ -29,21 +29,21 @@ void perimeter_right(struct s_node *root)
 void perimeter_node(struct s_node *root)
 {
 	if (root->left) perimeter_node(root->left);
-
+	
 	if(root->right) perimeter_node(root->right);
-
+	
 	if(!root->left && !root->right) printf(" %d", root->value);
 }
 
 void perimeter(struct s_node *root)
 {
 	if(!root)
-		return;
+		return; 
 	if (root) printf("%d", root->value);
 
-	if(root->left) perimeter_left(root->left); perimeter_node(root->left);
+	if(root->left) {perimeter_left(root->left); perimeter_node(root->left);}
 
-	if(root->right) perimeter_node(root->right); perimeter_right(root->right);
+	if(root->right) {perimeter_node(root->right); perimeter_right(root->right);}
 
 	printf("\n");
 }
