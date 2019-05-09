@@ -9,6 +9,8 @@ struct s_node {
 
 void perimeter_left(struct s_node *root)
 {
+	if(root)
+		return ;
 	if(root->left || root->right)
 		printf(" %d", root->value);
 	if(root->left)
