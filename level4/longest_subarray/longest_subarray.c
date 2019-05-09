@@ -1,22 +1,24 @@
-#include <string.h>
-#include <stdlib.h>
+/****************************************###Passed Exam Version###*****************************************/
 
-int odd_num(char c)
+#include <stdlib.h>
+#include <string.h>
+
+int is_odd(char c)
 {
     return ((c - '0') % 2);
 }
 
-char* longest_subarray(char* arr)
+char    *longest_subarray(char *arr)
 {
-    int len = strlen(arr);
-    int sum = 0, start_index, max_len = -1;
     int i, j;
+    int sum = 0, start_index, max_len = -1;
+    int len = strlen(arr);
     for(i = 0; i < len -1; i++)
     {
-        sum = (odd_num(arr[i]) == 1) ? -1 : 1;
+        sum = (is_odd(arr[i])) ? -1 : 1;
         for(j = i + 1; j < len; j++)
         {
-            odd_num(arr[j]) == 1 ? (sum += -1) : (sum += 1);
+            sum += (is_odd(arr[j])) ? -1 : 1;
 
             if(sum == 0 && max_len < j - i + 1)
             {
@@ -25,31 +27,29 @@ char* longest_subarray(char* arr)
             }
         }
     }
-    if (max_len == -1)
+    if(max_len == -1)
     {
-		char *res = (char *)malloc(sizeof(char) * (1));
-	    res[0] = '\0';
-	    return res;
+        char *r = (char *)malloc(sizeof(char) * 1);
+        r[0] = '\0';
+        return r;
     }
-	else
-	{
-		char *res = (char *)malloc(sizeof(char) * (max_len + 1));
-		for(i = start_index, j = 0; i < max_len + start_index; i++)
-		{
-			res[j++] = arr[i];
-		}
-		res[j] = '\0';
-		return res;
-	}
+    char *r = (char *)malloc(sizeof(char) * (max_len + 1));
+    for(i = start_index, j = 0; i < max_len + start_index; i++, j++)
+    {
+        r[j] = arr[i];
+    }
+    r[j] = '\0';
+    return r;
 }
 
-
-#include <stdio.h>
-int main ()
-{
-	char s[10000];
-	scanf ("%s", s);
-	printf("Answer is : \n");
-	printf("%s", longest_subarray(s));
-	return 0;
-}
+// #include <stdio.h>
+// int main(int ac, char **av)
+// {
+//     if(ac == 2)
+//     {
+//         char *r = longest_subarray(av[1]);
+//         char *s = "Fuck";
+//         printf("%s", (strlen(r)) ? r : s);
+//     }
+//     printf("\n");
+// }
