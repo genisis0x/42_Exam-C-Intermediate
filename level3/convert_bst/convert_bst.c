@@ -35,18 +35,14 @@ void help(struct s_node *r, struct s_node *mi, struct s_node *ma)
 struct s_node *min(struct s_node *l)
 {
     while(l->left)
-    {
         l = l->left;
-    }
     return l;
 }
 
 struct s_node *max(struct s_node *v)
 {
     while(v->right)
-    {
         v = v->right;
-    }
     return v;
 }
 
