@@ -66,7 +66,7 @@ char *infin_mult(char *s1, char *s2)
     int len = len1 + len2;
     
     int i, j;
-    int *arr = (int *)malloc(sizeof(int) * len);
+    int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
     for(i = 0; i < len; i++)
     {
         arr[i] = 0;
@@ -74,17 +74,17 @@ char *infin_mult(char *s1, char *s2)
     for(i = len1 - 1; i >= 0; i--)
         for(j = len2 - 1; j >= 0; j--)
         {
-            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0');
+            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0');  //collect result of each position;
         }
-    for(i = len - 1; i > 0; i--)
+    for(i = len - 1; i > 0; i--) //restore the carry for each position and get the final result;
     {
         arr[i - 1] += arr[i] / 10;
         arr[i] %= 10;
     }
-    char *r = (char *)malloc(sizeof(char) * (len + 1));
+    char *r = (char *)malloc(sizeof(char) * (len + 1)); //converting the digits result to string;
     i = 0;
     j = 0;
-    while (arr[i] == 0)
+    while (arr[i] == 0) //in case the zero position has no carry, if it does, ignore it;
         i++;
     while(i < len)
     {
