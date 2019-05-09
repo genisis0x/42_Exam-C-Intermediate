@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   convert_bst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/07 09:53:17 by exam              #+#    #+#             */
-/*   Updated: 2019/05/07 09:53:19 by exam             ###   ########.fr       */
+/*   Created: 2019/05/09 06:47:25 by maparmar          #+#    #+#             */
+/*   Updated: 2019/05/09 06:47:25 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-	struct s_node {
-		int           value;
-		struct s_node *right;
-		struct s_node *left;
-	};
+struct s_node {
+    int           value;
+    struct s_node *right;
+    struct s_node *left;
+};
 
 void help(struct s_node *r, struct s_node *mi, struct s_node *ma)
 {
@@ -65,9 +65,7 @@ struct s_node *convert_bst(struct s_node *bst)
     help(bst, min_val, max_val);
     return min_val;
 }
-/**********
-TEST MAIN
-********/
+
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -92,12 +90,12 @@ int main()
 {
     struct s_node *a = new(12);
     a->left = new(6);
-    // a->left->left = new(3);
-    // a->left->right = new(9);
+    a->left->left = new(3);
+    a->left->right = new(9);
 
-    // a->right = new(18);
-    // a->right->right = new(20);
-    // a->right->left = new(15);
+    a->right = new(18);
+    a->right->right = new(20);
+    a->right->left = new(15);
     struct s_node *c = a;
     p(c);
     printf("-----------------------------\n\n");
