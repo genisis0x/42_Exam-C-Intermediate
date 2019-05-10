@@ -86,7 +86,7 @@ void push(t_list *node)
 
 char *str_trim(char * s, int start, int len)
 {
-    char *res = (char *)malloc(sizeof(char));
+    char *res = (char *)malloc(sizeof(char) * (len + 1));
     int r = 0;
     while (r < len)
     {
