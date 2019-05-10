@@ -46,6 +46,10 @@ void perimeter(struct s_node *root)
 	printf("\n");
 }
 
+/************************
+	TEST MAIN
+************************/
+
 #include <stdlib.h>
 #include "stdio.h"
 #include "stdlib.h"
