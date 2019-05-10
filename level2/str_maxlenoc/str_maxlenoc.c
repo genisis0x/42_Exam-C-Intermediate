@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 04:02:57 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/10 07:37:21 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/05/10 07:41:37 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char *ft_str_max(char *s1, char *s2)
     int l1 = len(s1);
     int l2 = len(s2);
     int **arr = (int **)malloc(sizeof(int *) * l1 + 1);
+
     for(int i = 0; i <= l1; i++)
     {
         arr[i] = (int *)malloc(sizeof(int) * l2 + 1);
@@ -54,16 +55,19 @@ char *ft_str_max(char *s1, char *s2)
                 arr[i][j] = 0;
             }
         }
+    
     if (max_len == 0)
     {
         char *r = (char *)malloc(sizeof(char) * 1);
         r[0] = '\0';
         return r;
     }
+    
     for(int i = i_idx, j = j_idx; arr[i][j] > 0; i--, j--)
     {
         start = i - 1;
     }
+    
     char *r = (char *)malloc(sizeof(char) * (max_len + 1));
     for (int i = start , j = 0; i < start + max_len; i++, j++)
     {
