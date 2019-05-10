@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 19:03:11 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/17 19:05:58 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/05/10 08:35:59 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,4 +299,34 @@ curabitur$
 adipiscing$
 consectetur$
 sollicitudin$
+*/
+
+// TEST CASE4:
+/*Input: 
+"garotes foreboder hash arsenicating accolent ow dims twain handsew outasks fratries hill tot a \ 
+footraces a comanches potheen skim bike one bacterially nest nay my en dub areostyle railly pre \
+fee joys nepit cite ow coadunate um pox conclavist a axon sparta corelational gyms em daemonian \
+creepingly mirdha buy boxings detruncated vex catbird derealization juts stope gonial ear ziff a \
+a ebionite am smug rue chiasm it preter bitripartite conglobing eflagelliferous gematria corrugator \
+obliger koumyses bye uh oopak ye sos anagogics toughy of prexy fads laigh ok a buss dismiss glimmering \
+aquiform push applenut doest a oh sedged mild decoy fally do seal mien indubitate uh pic yale kymnel \
+aortoiliac beniseed a cercus acroesthesia bradyseismical utick creirgist tuts bostonite kiyas candidacies \
+aye neo pow earl til a intakes ox entocnemial"
+
+Output:
+a a a a a a a a a$
+am do em en it my of oh ok ow ow ox uh uh um ye$
+aye buy bye dub ear fee nay neo one pic pow pox pre rue sos til tot vex$
+axon bike buss cite dims earl fads gyms hash hill joys juts mien mild nest push seal skim smug tuts yale ziff$
+decoy doest fally kiyas laigh nepit oopak prexy stope twain utick$
+cercus chiasm gonial kymnel mirdha preter railly sedged sparta toughy$
+boxings catbird dismiss garotes handsew intakes obliger outasks potheen$
+accolent applenut aquiform beniseed ebionite fratries gematria koumyses$
+anagogics areostyle bostonite coadunate comanches creirgist daemonian footraces foreboder$
+aortoiliac conclavist conglobing corrugator creepingly glimmering indubitate$
+bacterially candidacies detruncated entocnemial$
+acroesthesia arsenicating bitripartite corelational$
+derealization$
+bradyseismical$
+eflagelliferous$
 */

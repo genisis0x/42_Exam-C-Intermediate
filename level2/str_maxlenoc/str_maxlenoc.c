@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 04:02:57 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/10 07:44:22 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/05/10 08:35:22 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ char *ft_str_max(char *s1, char *s2)
         arr[i] = (int *)malloc(sizeof(int) * l2 + 1);
     }
     
-    for(int i = 0 ; i <= l1; i++)
+    for(int i = 0 ; i <= l1; i++) // set all values to 0
         for(int j = 0; j <= l2; j++)
             arr[i][j] = 0;
 
-    int i_idx, j_idx, start, max_len = 0;
+    int i_idx, j_idx, start, max_len = 0; // DP for LCS string
     for(int i = 1 ; i <= l1; i++)
         for(int j = 1; j <= l2; j++)
         {
@@ -63,7 +63,7 @@ char *ft_str_max(char *s1, char *s2)
         return r;
     }
     
-    for(int i = i_idx, j = j_idx; arr[i][j] > 0; i--, j--)
+    for(int i = i_idx, j = j_idx; arr[i][j] > 0; i--, j--) // find the starting index from the string
     {
         start = i - 1;
     }
@@ -111,3 +111,55 @@ int main(int ac, char **av)
     write(1, "\n", 1);
     return 0;
 }
+
+/**************************************** GOOD TEST CASES *************************************/
+
+// TEST CASE 1: 
+
+/*
+Input:
+"Bonjour"
+
+Output:
+Bonjour$
+*/
+
+// TEST CASE 2: 
+
+/*
+Input:
+"bonjouran" "bonjouran" "confiseriean" "bonne annee"
+
+Output:
+on$
+*/
+
+// TEST CASE 3:
+
+/*
+Input:
+"bonjour an" "bonjour an" "confiserie an" "bonne annee"
+
+Output:
+ an$
+*/
+
+// TEST CASE 4:
+
+/*
+Input:
+"voila" "voila" "ouais ben voila"
+
+Output:
+voila$
+*/
+
+// TEST CASE 5:
+
+/*
+Input:
+"bosdsdfnjodur" "atehhellosd" "afkuonjosurafg" "headfgllosf" "fghellosag
+
+Output:
+os$
+*/
