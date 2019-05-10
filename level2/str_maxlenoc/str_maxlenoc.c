@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 04:02:57 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/10 08:35:22 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/05/10 09:28:19 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,17 @@ char *ft_str_max(char *s1, char *s2)
 {
     int l1 = len(s1);
     int l2 = len(s2);
-    int **arr = (int **)malloc(sizeof(int *) * l1 + 1); // For Dp need the array of size l1 * l2
-
-    for(int i = 0; i <= l1; i++)
-    {
-        arr[i] = (int *)malloc(sizeof(int) * l2 + 1);
-    }
-    
-    for(int i = 0 ; i <= l1; i++) // set all values to 0
-        for(int j = 0; j <= l2; j++)
-            arr[i][j] = 0;
+    int arr[l1 + 1][l2 + 1];
 
     int i_idx, j_idx, start, max_len = 0; // DP for LCS string
-    for(int i = 1 ; i <= l1; i++)
-        for(int j = 1; j <= l2; j++)
+    for(int i = 0 ; i <= l1; i++)
+        for(int j = 0; j <= l2; j++)
         {
-            if(s1[i - 1] == s2[j -1])
+            if(i == 0 || j ==0 ) // first col and first row set to 0 to get the reference 
+            {
+                arr[i][j] = 0;
+            }
+            else if(s1[i - 1] == s2[j -1])
             {
                 arr[i][j] = 1 + arr[i -1][j -1]; // if char matches then add one to the previous diagonal element 
                 if(max_len < arr[i][j]) // updated if the len of common string is maximum then the previous length
@@ -76,7 +71,6 @@ char *ft_str_max(char *s1, char *s2)
         r[j] = s1[i];
     }
     r[max_len] = '\0';
-    free(arr);
     return r;
 }
 
