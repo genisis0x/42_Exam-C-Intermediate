@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/********************* ###### Fully Tested and Passed in Exam ##### ***********************/
+
 int    volume_histogram(int *histogram, int size)
 {
 	int left_max = 0;
