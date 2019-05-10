@@ -1,3 +1,5 @@
+/************************** #### PASSED FINAL EXAM #### ***************************/
+
 #include <stdio.h>
 
 struct s_node {
