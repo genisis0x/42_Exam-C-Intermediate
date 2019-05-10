@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/************************************** #### PASSED FINAL EXAM #### *************************************/
+
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -25,7 +27,7 @@ char *ft_str_max(char *s1, char *s2)
 {
     int l1 = len(s1);
     int l2 = len(s2);
-    int **arr = (int **)malloc(sizeof(int *) * l1 + 1);
+    int **arr = (int **)malloc(sizeof(int *) * l1 + 1); // For Dp need the array of size l1 * l2
 
     for(int i = 0; i <= l1; i++)
     {
@@ -42,8 +44,8 @@ char *ft_str_max(char *s1, char *s2)
         {
             if(s1[i - 1] == s2[j -1])
             {
-                arr[i][j] = 1 + arr[i -1][j -1];
-                if(max_len < arr[i][j])
+                arr[i][j] = 1 + arr[i -1][j -1]; // if char matches then add one to the previous diagonal element 
+                if(max_len < arr[i][j]) // updated if the len of common string is maximum then the previous length
                 {
                     max_len = arr[i][j];
                     i_idx = i;
@@ -63,7 +65,7 @@ char *ft_str_max(char *s1, char *s2)
         return r;
     }
     
-    for(int i = i_idx, j = j_idx; arr[i][j] > 0; i--, j--) // find the starting index from the string
+    for(int i = i_idx, j = j_idx; arr[i][j] > 0; i--, j--) // find the starting index form the string s1;
     {
         start = i - 1;
     }
