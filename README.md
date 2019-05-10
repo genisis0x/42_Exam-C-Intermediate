@@ -47,7 +47,7 @@ char *:smiling_imp: = "Very_Good_question's";
 1.	longest_sequence ✅
 2.	ord_alphalong ✅
 3.	reverse_tree ✅
-4.	str_maxlenoc -> #### Remaing
+4.	str_maxlenoc -> ✅
 5.  is_looping  ✅
 >> #### Subject Status level 3 :heavy_check_mark: :100:
 1.	can_split ✅
