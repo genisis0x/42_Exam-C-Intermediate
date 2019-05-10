@@ -10,27 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define max(a,b) (a < b ? b : a)
-#include <stdio.h>
-struct s_node 
+/********************************* #### Passed in Final Exam #### *************************/ 
+
+struct s_node
 {
-	int value;
-	struct s_node *left;
-	struct s_node *right;
+    int value;
+    struct s_node *left;
+    struct s_node *right;
 };
+
+#define max(a, b) (a < b ? b : a)
 
 int longest(struct s_node *node)
 {
-	if (!node)
+	if(!node)
 		return 0;
-	return max(longest(node->left), longest(node->right)) + 1;
+	else
+		return max(longest(node->left), longest(node->right)) + 1;
 }
-int	width_tree(struct s_node *n)
+
+
+int width_tree(struct s_node *n)
 {
 	if (!n)
 		return 0;
-	int width = longest(n->left) + longest(n->right) + 1;
-	return max(max(width_tree(n->left), width_tree(n->right)), width);
+	else
+	{
+		int width = longest(n->left) + longest(n->right) + 1;
+		return max(max(width_tree(n->left), width_tree(n->right)), width);
+	}
 }
 
 /************
