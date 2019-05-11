@@ -17,13 +17,10 @@ struct s_node {
 
 int len_list(struct s_node *list)
 {
-	int count = 0;
-	while (list)
-	{
-		count++;
-		list = list->next;
-	}
-	return count;
+	int c = 0;
+	for (; list; list = list->next)
+		c++;
+	return c;
 }
 
 void swap(struct s_node **l1, struct s_node **l2)
