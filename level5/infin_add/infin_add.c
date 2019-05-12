@@ -1,195 +1,197 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   infin_add.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maparmar <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 20:06:01 by maparmar          #+#    #+#             */
-/*   Updated: 2019/04/29 20:26:02 by maparmar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/********************************** ### Passed Exam Version ### *************************************/
+
 #include <unistd.h>
 #include <stdlib.h>
 
-void swap(char **a, char **b)
-{
-    char *temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 int len(char *s)
 {
-    int c = 0;
-    while(*s)
+    int i, c = 0;
+    for(i = 0; s[i]; i++)
     {
-        c++;
-        s++;
+      c = (s[i] == '-') ? c : c + 1;
     }
     return c;
 }
 
-char *infin_add(char *s1, char *s2)
+int ft_strcmp(char *s1, char *s2)
 {
-    int l1 = len(s1);
-    int l2 = len(s2);
-    if(l1 > l2)
+    while(*s1 && *s2)
     {
-        swap(&s1, &s2);
-        int temp = l1;
-        l1 = l2;
-        l2 = temp;
+        if(*s1 == *s2)
+        {
+            s1++;
+            s2++;
+        }
+        return *s1 - *s2;
     }
-    char *r = (char *)malloc(sizeof(char) * (l2 + 2));
-    int sum = 0, carry = 0;
-    r[l2 + 1] = '\0';
-    for(int i = 1; i <= l1; i++)
-    {
-        sum = (s1[l1 - i] - '0') + (s2[l2 - i] - '0') + carry;
-        r[l2 + 1 -i] = sum % 10 + '0';
-        carry = sum / 10;
-    }
-    for(int i = 1; i <= l2 -l1; i++)
-    {
-        sum = (s2[l2 - l1 - i] - '0') + carry;
-        r[l2 - l1 + 1 - i ] = sum % 10 + '0';
-        carry = sum / 10;
-    }
-    if(carry)
-    {
-        r[0] = carry + '0';
-    }
-    else
-    {
-        r[0] = '\t';
-    }
-    return r;
+    return 0;
 }
 
-char *infin_sub(char *s1, char *s2)
+void swap(char **s1, char **s2)
 {
-    int l1 = len(s1);
-    int l2 = len(s2);
-    if (l1 > l2)
+    char *temp = *s1;
+    *s1 = *s2;
+    *s2 = temp;
+}
+
+void infi_add(char *s1, char *s2, int l1, int l2)
+{
+    int i, j;
+    int carry = 0;
+    int *arr = (int *)malloc(sizeof(int) * l2 + 1);
+    for(i = 0; i <= l2; i++)
     {
-        swap(&s1, &s2);
-        int temp = l1;
-        l1 = l2;
-        l2 = temp;
+        arr[i] = 0;
     }
-    char *r = (char *)malloc(sizeof(char) * (l2 + 1));
-    int sum = 0, carry = 0;
-    r[l2] = '\0';
-    for (int i = 1; i <= l1; i++)
+    for(i = l1 - 1, j = l2 - 1; i >= 0; i--, j--)
     {
-        sum = (s2[l2 - i] - '0') - (s1[l1 - i] - '0') - carry;
-        if(sum < 0)
+        arr[j + 1] = (s1[i] - '0') + (s2[j] - '0') + carry;
+        carry = arr[ j + 1] / 10;
+        arr[j + 1] %= 10;
+    }
+
+    for(i = l2 - l1 - 1 ; i >= 0; i--)
+    {
+        arr[i + 1] = (s2[i] - '0') + carry;
+        carry = arr[i + 1] / 10;
+        arr[i + 1] %= 10;
+    }
+    if(carry > 0)
+    {
+        arr[0] = carry;
+    }
+    i = 0;
+    while(arr[i] == 0 && i <= l2)
+        i++;
+    if (i == l2 + 1)
+    {
+        write(1, "0", 1);
+        return;
+    }
+    while(i <= l2)
+    {
+        char c = arr[i++] + '0';
+        write(1, &c, 1);
+    }
+}
+
+void infi_sub(char *s1, char *s2, int l1, int l2)
+{
+    int i, j;
+    int carry = 0;
+    int *arr = (int *)malloc(sizeof(int) * l2);
+    for(i = 0; i <= l2; i++)
+    {
+        arr[i] = 0;
+    }
+    for(i = l1 -1, j = l2 - 1; i >= 0; i--, j--)
+    {
+        arr[j] = (s2[j] - '0') - (s1[i] - '0') - carry;
+        if(arr[j] < 0)
         {
-            sum = sum + 10;
             carry = 1;
+            arr[j] += 10;
         }
         else
         {
             carry = 0;
         }
-        
-        r[l2  - i] = sum % 10 + '0';
+
     }
-    for (int i = 1; i <= l2 - l1; i++)
+    for(i = l2 - l1 - 1; i >= 0; i--)
     {
-        sum = (s2[l2 - l1 - i] - '0') - carry;
-        if (sum < 0)
+        arr[i] = (s2[i] - '0') - carry;
+        if(arr[i] < 0)
         {
-            sum = sum + 10;
             carry = 1;
+            arr[i] += 10;
         }
         else
         {
             carry = 0;
         }
-        
-        r[l2 - l1 - i] = sum % 10 + '0';
-    }
-    
-    return r;
-}
 
-char *ft_strcpy(char *s)
-{
-    int i = 0;
-    char *r = (char *)malloc(sizeof(char) * len(s));
-    while(*s)
+    }
+    i = 0;
+    while(arr[i] == 0 && i < l2)
+        i++;
+    if (i == l2)
     {
-        if(*s == '-')
-        {
-            s++;
-        }
-        else
-        {
-            r[i] = *s;
-            i++;
-            s++;
-        }
+        write(1, "0", 1);
+        return;
     }
-    r[i] = '\0';
-    return r;
+    while(i < l2)
+    {
+        char c = arr[i++] + '0';
+        write(1, &c, 1);
+    }
 }
-
 int main(int ac, char **av)
 {
-    char *s1 = av[1];
-    char *s2 = av[2];
-    int i = 0;
-    char *res;
-
-	if((len(s1) == 1 && len(s2)) == 1 && s1[i] == '0' && s2[i] == '0')
-	{
-		write(1, "0\n", 2);
-		return 0;
-	}
     if(ac == 3)
     {
-        if ((s1[i] != '-' && s2[i] != '-') || (s1[i] == '-' && s2[i] == '-'))
+        char *s1 = av[1];
+        char *s2 = av[2];
+        int lens1 = len(s1);
+        int lens2 = len(s2);
+
+        if(lens1 > lens2)
         {
-            if ((s1[i] == '-' && s2[i] == '-'))
+            swap(&s1, &s2);
+            int temp = lens1;
+            lens1 = lens2;
+            lens2 = temp;
+        }
+
+        if(*s1 == '-')
+        {
+            if(*s2 == '-')
             {
-                s1 = ft_strcpy(s1);
-                s2 = ft_strcpy(s2);
+                s1++, s2++;
                 write(1, "-", 1);
+                infi_add(s1, s2, lens1, lens2);
             }
-            res = infin_add(s1, s2);
-            while(res[i] == '\t' || res[i] == '0')
+            else
             {
-                i++;
+                s1++;
+                if(ft_strcmp(s1, s2) == 0 && lens1 == lens2)
+                {
+                    write(1, "0\n", 2);
+                    return 0;
+                }
+                if(ft_strcmp(s1, s2) > 0 && lens1 == lens2)
+                {
+                    swap(&s1, &s2);
+                    int temp = lens1;
+                    lens1 = lens2;
+                    lens2 = temp;
+                    write(1, "-", 1);
+                }
+                infi_sub(s1, s2, lens1, lens2);
             }
-            while (res[i])
+        }
+        else if(*s2 == '-')
+        {
+            s2++;
+            if(ft_strcmp(s1, s2) == 0 && lens1 == lens2)
+                {
+                    write(1, "0\n", 2);
+                    return 0;
+                }
+            if(ft_strcmp(s1, s2) > 0 && lens1 == lens2)
             {
-                write(1, &res[i], 1);
-                i++;
+                swap(&s1, &s2);
+                int temp = lens1;
+                lens1 = lens2;
+                lens2 = temp;
             }
+            else
+                write(1, "-", 1);
+            infi_sub(s1, s2, lens1, lens2);
         }
         else
-        {
-            if((len(s1) > len(s2) && s1[0] == '-') || (len(s1) < len(s2) && s2[0] == '-'))
-            {
-                write(1, "-", 1);
-            }
-            s1 = ft_strcpy(s1);
-            s2 = ft_strcpy(s2);
-            res = infin_sub(s1, s2);
-            while(res[i] == '\t' || res[i] == '0')
-            {
-                i++;
-            }
-            while (res[i])
-            {
-                write(1, &res[i], 1);
-                i++;
-            }
-        }
-        free(res);
+            infi_add(s1, s2, lens1, lens2);
+        write(1, "\n", 1);
     }
-    write(1, "\n", 1);
     return 0;
 }
