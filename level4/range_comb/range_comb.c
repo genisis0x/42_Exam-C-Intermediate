@@ -6,21 +6,23 @@
 /*   By: manmeetsingh <manmeetsingh@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 02:19:35 by manmeetsing       #+#    #+#             */
-/*   Updated: 2019/05/12 02:31:33 by manmeetsing      ###   ########.fr       */
+/*   Updated: 2019/05/12 02:41:53 by manmeetsing      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 
 int fac(int n)
 {
     int fact = 1;
-    for(i = n; i >= 1; i--)
+    for(int i = n; i >= 1; i--)
         fact *= n;
+    return fact;
 }
 
 int    **range_comb(int n)
 {
-    int **res =(int **)malloc(sizeof(int *) * fac(n));
+    int **res = (int **)malloc(sizeof(int *) * fac(n));
     
     for(int i = 0 ; i < fac(n); i++)
         res[i] = (int *)malloc(sizeof(int) * n);
