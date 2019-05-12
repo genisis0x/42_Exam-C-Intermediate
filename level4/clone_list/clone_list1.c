@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clone_list.c                                       :+:      :+:    :+:   */
+/*   clone_list1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/07 01:54:39 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/12 09:35:06 by maparmar         ###   ########.fr       */
+/*   Created: 2019/05/12 09:19:16 by maparmar          #+#    #+#             */
+/*   Updated: 2019/05/12 09:34:23 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,49 +18,49 @@ struct s_node {
     struct s_node *other;
 };
 
-struct s_node *clone_list(struct s_node *node) {
+struct s_node *new(int item)
+{
+    struct s_node *r =(struct s_node *)malloc(sizeof(struct s_node));
+    r->data = item;
+    r->next = NULL;
+    r->other = NULL;
+    return r;
+}
 
-    if (!node)
-        return 0;
+struct s_node *clone_list(struct s_node *node)
+{
+    struct s_node *curr = node, *temp;
 
-    struct s_node *original = node;
-    struct s_node *temp;
-
-    // Clone list in-between original
-    while (original) {
-        temp = original->next;
-        original->next = (struct s_node *)malloc(sizeof(struct s_node));
-        original->next->data = original->data;
-        original->next->other = 0;
-        original->next->next = temp;
-        original = temp;
+    // Clone list in-between the original List
+    while(curr)
+    {
+        temp = curr->next;
+        curr->next = new(curr->data);
+        curr->next->next = temp;
+        curr = temp;
     }
+    curr = node;
 
-    original = node;
-
-    // Set other pointers for cloned list
-    while (original) {
-        if (original->other)
-            original->next->other = original->other->next;
-        if (original->next)
-            original = original->next->next;
-        else
-            break;
+     // Set other pointers for cloned list from getting reference to original list 
+    while(curr)
+    {
+        if(curr->next)
+            curr->next->other = curr->other ? curr->other->next : curr->other;
+        curr = curr->next ? curr->next->next: curr->next;
     }
+    struct s_node *org = node, *copy = node->next;
 
-    original = node;
-    struct s_node* copy = node->next;
-    struct s_node* copyHead = copy;
-
-    while (original && copy) {
-        if (original->next)
-            original->next = original->next->next;
-        if (copy->next)
-            copy->next = copy->next->next;
-        original = original->next;
+    temp = copy;
+    // Bifurcate both the list and return the cloned list.
+    while(copy && org)
+    {
+        org->next = org->next ? org->next->next : org->next;
+        copy->next = copy->next ? copy->next->next : copy->next;
         copy = copy->next;
+        org = org->next;
     }
-    return copyHead;
+    return temp;
+
 }
 
 /************
