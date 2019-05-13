@@ -1,4 +1,5 @@
-Concept: Let us take 2 pointers namely **slow Pointer** and **fast Pointer** to traverse a Singly Linked List at different \
+Concept for is_looping.c : 
+Let us take 2 pointers namely **slow Pointer** and **fast Pointer** to traverse a Singly Linked List at different \
 speeds.
 A slow Pointer (Also called Tortoise) moves one step forward while fast Pointer (Also called Hare) moves 2 steps forward.
 
