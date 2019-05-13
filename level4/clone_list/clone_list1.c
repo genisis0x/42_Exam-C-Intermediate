@@ -22,8 +22,7 @@ struct s_node *new(int item)
 {
     struct s_node *r =(struct s_node *)malloc(sizeof(struct s_node));
     r->data = item;
-    r->next = NULL;
-    r->other = NULL;
+    r->next = r->other = NULL;
     return r;
 }
 
