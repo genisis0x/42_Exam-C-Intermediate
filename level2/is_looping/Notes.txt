@@ -1,0 +1,11 @@
+Concept: Let us take 2 pointers namely **slow Pointer** and **fast Pointer** to traverse a Singly Linked List at different \
+speeds.
+A slow Pointer (Also called Tortoise) moves one step forward while fast Pointer (Also called Hare) moves 2 steps forward.
+
+Step 1: Start Tortoise and Hare at the first node of the List.
+Step 2: If Hare reaches end of the List, return as there is no loop in the list.
+Step 3: Else move Hare one step forward.
+Step 4: If Hare reaches end of the List, return as there is no loop in the list.
+Step 5: Else move Hare and Tortoise one step forward.
+Step 6: If Hare and Tortoise pointing to same Node return, we found loop in the List.
+Step 7: Else start with Step 2.
