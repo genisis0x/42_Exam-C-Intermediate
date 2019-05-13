@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/******************************* #### Passed in Final Exam #### *******************************/
+
 struct s_node 
 {
 	int value;
@@ -17,51 +19,102 @@ struct s_node
 	struct s_node *right;
 };
 
-#define MAX(a, b) (a > b ? a : b)
+#define max(a, b) (a < b ? b : a) 
 
-int recursion(struct s_node *node, int parent_value, int depth)
+void util(struct s_node *node, int currlen, int expected, int *res)
 {
-	if(!node)
-		return 0;
-	else
-	{
-		int current = 1;
-		if(node->value == parent_value + 1)
-			current = depth + 1;
-		return MAX(MAX(recursion(node->left, node->value, current), recursion(node->right, node->value, current)), current);
-	}
+    if (!node)
+        return ;
+    if(node->value == expected)
+        currlen++;
+    else
+        currlen = 1;
+    *res = max(*res, currlen);
+    if(node->left)
+        util(node->left, currlen, node->value + 1, res);
+    if(node->right)
+        util(node->right, currlen, node->value + 1, res);
 }
 
 
 int	longest_sequence(struct s_node *node)
 {
-	return recursion(node, ~0u, 0);
+    if(!node)
+        return 0;
+    int res = 0;
+    util(node, 0, node->value, &res);
+    return res;
 }
 
-/*
-#include <stdlib.h>
-#include <stdio.h>
-struct s_node *new(int item)
-{
-	struct s_node *node = (struct s_node *)malloc(sizeof(struct s_node));
-	node->left = NULL;
-	node->right = NULL;
-	node->value = item;
-	return node;
-}
+/************************
+	TEST MAIN
+************************/
 
-int main (void)
-{
-	struct s_node *n = new(10);
-	n->left = new(5);
-	n->left->left = new(6);
-	n->left->right = new(9);
-	n->left->left->left = new(7);
-	n->left->left->right = new(13);
 
-	printf("The longest_sequence of the tree is: %d\n", longest_sequence(n));
-	printf("The longest_sequence of the NULL tree is: %d\n", longest_sequence(0));
-	printf("The value of ~0u >> 1 + 1 is: %d", (~0u >> 1) + 1);
-	return 0;
-}
-*/
+// typedef struct s_node t_node;
+// #include <stdio.h>
+// int main()
+// {
+//     t_node node1 = {
+//         .value = 10,
+//         .left = &(t_node){
+//             .value = 5,
+//             .left = &(t_node){
+//                 .value = 6,
+//                 .left = &(t_node){
+//                     .value = 7,
+//                 }
+//             },
+//             .right = &(t_node){
+//                 .value = 9,
+//             }
+//         }
+//     };
+
+//     printf("The longest sequence 1st is: %d\n", longest_sequence(&node1));
+
+//     t_node node2 = {
+//         .value = 5,
+//         .left = &(t_node){
+//             .value = 6,
+//         },
+//         .right = &(t_node){
+//             .value = 4,
+//             .left = &(t_node){
+//                 .value = 9,
+//                 .left = &(t_node){
+//                     .value = 3,
+//                 },
+//                 .right = &(t_node){
+//                     .value = 2,
+//                 }
+//             },
+//             .right = &(t_node){
+//                 .value = 3,
+//                 .right = &(t_node){
+//                     .value = 2,
+//                 }
+//             }
+//         }
+//     };
+//     printf("The longest sequence 2nd is: %d\n", longest_sequence(&node2));
+
+//     t_node node3 ={
+//         .value = 10,
+//         .left = &(t_node){
+//             .value = 15,
+//             .left = &(t_node){
+//                 .value = 61,
+//             }
+//         },
+//         .right = &(t_node){
+//             .value = 41,
+//             .left = &(t_node){
+//                 .value = 80,
+//             }
+//         }
+//     };
+//     printf("The longest sequence 3rd is: %d\n", longest_sequence(&node3));
+//     printf("The longest sequence 4th is: %d\n", longest_sequence(0));
+//     return 0;
+// }
