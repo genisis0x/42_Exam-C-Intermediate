@@ -12,96 +12,136 @@
 
 /********************************* #### Passed in Final Exam #### *************************/ 
 
-struct s_node
+struct s_node 
 {
-    int value;
-    struct s_node *left;
-    struct s_node *right;
+	int value;
+	struct s_node *left;
+	struct s_node *right;
 };
 
 #define max(a, b) (a < b ? b : a)
 
-int longest(struct s_node *node)
+
+int long_util(struct s_node *n)
 {
-	if(!node)
+	if(!n)
 		return 0;
 	else
-		return max(longest(node->left), longest(node->right)) + 1;
+		return ( 1 + max(long_util(n->left), long_util(n->right)));
 }
 
-
-int width_tree(struct s_node *n)
+int	width_tree(struct s_node *n)
 {
-	if (!n)
+	if(!n)
 		return 0;
-	else
+	else	
 	{
-		int width = longest(n->left) + longest(n->right) + 1;
-		return max(max(width_tree(n->left), width_tree(n->right)), width);
+		int lheight = long_util(n->left);
+		int rheight = long_util(n->right);
+		return max(max(width_tree(n->left), width_tree(n->right)), 1 + lheight + rheight);
 	}
 }
 
-/************
-  Test Main
-************/
+// typedef struct s_node t_n;
+// #include <stdio.h>
+// int main ()
+// {
+// 	t_n n1 = {
+// 		.value = 1,
+// 		.left = &(t_n){
+// 			.value = 2,
+// 			.left = &(t_n){
+// 				.value = 3
+// 			},
+// 			.right = &(t_n){
+// 				.value = 4,
+// 				.left = &(t_n){
+// 					.value = 6
+// 				}
+// 			}
+// 		},
+// 		.right = &(t_n){
+// 			.value = 5,
+// 			.left = &(t_n){
+// 				.value = 7
+// 			},
+// 			.right = &(t_n){
+// 				.value = 8
+// 			}
+// 		}
+// 	};
+// 	printf("The 1st width of the tree is: %d\n", width_tree(&n1));
 
-#include <stdio.h>
-#include <stdlib.h>
-struct s_node *b(int v)
-{
-	struct s_node *new = malloc(sizeof(struct s_node));
-	new->value = v;
-	new->left = new->right = 0;
-	return new;
-}
-int main()
-{
-	
-	struct s_node *r = b(1);
+// 	t_n n2 = {
+// 		.value = 1,
+// 		.left = &(t_n){
+// 			.value = 2,
+// 			.left = &(t_n){
+// 				.value = 4,
+// 				.left =&(t_n){
+// 					.value = 5,
+// 					.right = &(t_n){
+// 						.value = 8
+// 					}
+// 				},
+// 			.right = &(t_n){
+// 				.value = 6
+// 			}
+// 		},
+// 		.right = &(t_n){
+// 			.value = 7,
+// 			.left = &(t_n){
+// 				.value = 9,
+// 				.left = &(t_n){
+// 					.value = 11
+// 				},
+// 				.right = &(t_n){
+// 					.value = 12
+// 				}
+// 			},
+// 			.right = &(t_n){
+// 				.value = 10,
+// 				.right = &(t_n){
+// 					.value = 13
+// 				}
+// 			}
+// 		}
+// 	},
+// 	.right = &(t_n){
+// 		.value = 3
+// 		}
+// 	};
+// 	printf("The 2nd width of the tree is: %d\n", width_tree(&n2));
 
-	r->left = b(2);
-	r->left->left = b(3);
-	r->left->right = b(4);
-	r->left->right->left = b(6);
+// 	t_n n3 = {
+// 		.value = 10,
+// 		.right = &(t_n){
+// 			.value = 12
+// 		}
+// 	};
+// 	printf("The 3rd width of the tree is: %d\n", width_tree(&n3));
 
-	r->right = b(5);
-	r->right->left = b(7);
-	r->right->right = b(8);
+// 	t_n n4 = {
+// 		.value = 25,
+// 		.left = &(t_n){
+// 			.value = 35,
+// 			.left = &(t_n){
+// 				.value = 12
+// 			},
+// 			.right = &(t_n){
+// 				.value = 9,
+// 				.left = &(t_n){
+// 					.value = 3
+// 				}
+// 			}
+// 		}
+// 	};
+// 	printf("The 4th width of the tree is: %d\n", width_tree(&n4));
 
-	printf("%d\n", width_tree(r));
+// 	t_n n5 ={
+// 		.value = 10
+// 	};
+// 	printf("The 5th width of the tree is: %d\n", width_tree(&n5));
 
-	struct s_node *a = b(1);
-
-	a->left = b(2);
-	a->left->left = b(4);
-	a->left->left->left = b(5);
-	a->left->left->left->right = b(8);
-
-	a->left->left->right = b(6);
-	a->left->right = b(7);
-	a->left->right->left = b(9);
-	a->left->right->left->left = b(11);
-	a->left->right->left->right = b(12);
-
-	a->left->right->right = b(10);
-	a->left->right->right->right = b(13);
-
-	a->right = b(3);
-	printf("%d\n", width_tree(a));
-
-	struct s_node *c = b(10);
-	c->right = b(12);
-	printf("%d\n", width_tree(c));
-
-	struct s_node *d = b(25);
-	d->left = b(33);
-	d->left->left = b(12);
-	d->left->right = b(9);
-	d->left->right->left = b(3);
-	printf("%d\n", width_tree(d));
-
-	struct s_node *e = b(10);
-	printf("%d\n", width_tree(e));
-
-	return 0;
-}
+// 	return 0;
+// }
