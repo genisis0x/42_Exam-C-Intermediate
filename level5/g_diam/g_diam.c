@@ -99,8 +99,7 @@ int main(int ac, char **av)
         char *s = av[1];
         int max = find_max(&s);
         s = av[1];
-        max++;
-        solve_matrix(max, s);
+        solve_matrix(max + 1, s);
         ft_putnbr(ref);
     }
     write(1, "\n", 1);
