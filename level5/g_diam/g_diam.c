@@ -6,7 +6,7 @@
 /*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 05:31:54 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/14 06:51:27 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/05/14 07:13:30 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ int find_max(char **s)
 }
 
 
-void longest_path(int max, int arr[max][max], int visited[max], int r, int length)
+void longest_path(int max, uint8_t arr[max][max], uint8_t visited[max], int r, int length)
 {
     visited[r] = 1;
     for(int c = 0; c < max; c++)
     {
         if(!visited[c] && arr[r][c])
         {
-           if(ref < length + 1)
-            ref = length + 1;
+           ref = (ref < length + 1) ? length + 1 : ref;
            longest_path(max, arr, visited, c, length + 1);
         }
     }
@@ -71,8 +70,8 @@ void longest_path(int max, int arr[max][max], int visited[max], int r, int lengt
 void solve_matrix(int max, char *s)
 {
     int r = max, c = max;
-    int arr[r][c];
-    int visited[max];
+    uint8_t arr[max][max];
+    uint8_t visited[max];
     for(r = 0; r < max; r++)
         for(c = 0; c < max; c++)
         {
@@ -137,5 +136,4 @@ int main(int ac, char **av)
 // "0-2 0-1 1-3 1-6 1-0 1-5 2-5 2-6 3-6 3-4 3-5 3-0 3-1 3-2 4-6 5-4 5-2 5-0 5-3 5-6 6-0"
 // Output :
 // 7$
-
 
