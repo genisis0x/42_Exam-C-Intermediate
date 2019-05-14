@@ -102,3 +102,32 @@ int main() {
 }
 
 //Expected Output -> (null) & d
+
+/*
+#include <stdio.h>
+typedef struct s_node t_n;
+
+int main()
+{
+	t_n n1 ={
+		.content = "a",
+		.next = &(t_n){
+			.content = "b"
+		}
+	};
+	t_n n2 ={
+		.content = "a",
+		.next = &(t_n){
+			.content = "d"
+		}
+	};
+	t_n *r = intersection(&n1, &n2);
+	n1.next = (n2.next);
+	t_n *r1 = intersection(&n1, &n2);
+	printf("The intersection is %s", r ? r->content : 0);
+	printf("The intersection is %s", r1 ? r1->content : 0);
+	
+	return 0;
+}*/
+
+//Expected Output -> (d) & (null)
