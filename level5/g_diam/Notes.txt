@@ -1,0 +1,4 @@
+1. 1st Solution of g_diam -> implementation of Graph by Adjacency Matrix method
+2. 2nd Solution of g_diam -> implementation of Graph by Adjacency list method
+3. DFT is used and DFS is used for each node + Backtracking 
+4. at each point the max_length_path is consider.
