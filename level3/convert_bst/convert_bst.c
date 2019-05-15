@@ -129,3 +129,54 @@ cir Doub linklist:
 20
 3
 */
+
+
+/*********************TEST FUNCTION***************/
+// #include <stdio.h>
+// void print_in(struct s_node *s)
+// {
+//     if(!s)
+//         return;
+//     print_in(s->left);
+//     printf("%d\n", s->value);
+//     print_in(s->right);
+// }
+// typedef struct s_node t_n;
+// int main()
+// {
+//     // t_n n1 = {
+//     //     .value = 6,
+//     //     .left = &(t_n){
+//     //         .value = 2,
+//     //         .left = &(t_n){
+//     //             .value = 1
+//     //         },
+//     //         .right = &(t_n){
+//     //             .value = 4
+//     //         }
+//     //     },
+//     //     .right = &(t_n){
+//     //         .value = 8,
+//     //         .right = &(t_n){
+//     //             .value = 9
+//     //         },
+//     //         .left = &(t_n){
+//     //             .value = 7
+//     //         }
+//     //     }
+//     // };
+
+//     t_n n2 = {
+//         .value = 17
+//     };
+//     print_in(&n2);
+//     printf("-------------------------------\n");
+//     t_n *r = convert_bst(&n2);
+//     int i = -1;
+//     while(++i < 15)
+//     {
+//         printf("%d\n", r->value);
+//         r = r->right;
+//     }
+//     return 0;
+// }
