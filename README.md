@@ -16,9 +16,9 @@ Any suggestion's will be highly appreciated. -_-
 4. r --> run
 5. gui ---> Graphic User Interface.
 6. use 's' key to go to each next step.
-
-### If you found helpful then please do follow and give a star :v: :raised_hands:
-
+---
+```=> If you found helpful then please do follow and give a star :v: :raised_hands:```
+---
 ## Steps to clone the work
 1. cd ~
 2. git clone https://github.com/Manmeet2018/C--Intermediate--Exam--42--.git
