@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int len(char *s)
+int len(char *s) // utill function to calculate the length of the string
 {
     int c = 0;
     for(; *s; s++)
@@ -25,37 +25,40 @@ int len(char *s)
 
 void infin_mult(char *s1, char *s2)
 {
-    if(*s1 == '0' || *s2 == '0')
+    if(*s1 == '0' || *s2 == '0') // If any of the string is zero then just write 0 and return.
     {
 		write (1, "0", 1);
 		return ;
     }
-    int l1 = len(s1);
-    int l2 = len(s2);
-    int len = l1 + l2;
-    int *arr = (int *)malloc(sizeof(int) * (len));
+    int l1 = len(s1); // length of first string
+    int l2 = len(s2); // length of second string
+    int len = l1 + l2; // total length of resulted string
+
+    int *arr = (int *)malloc(sizeof(int) * (len)); // array to calculate the output  
     int i, j;
-    for(i = 0; i < len; i++)
+	
+    for(i = 0; i < len; i++) // assign all the elements of array to zero;
         arr[i] = 0;
-    for(i = l1 -1; i >= 0; i--)
+	
+    for(i = l1 -1; i >= 0; i--) // calulate the result for each position and store it.
         for(j = l2 -1; j>= 0; j--)
-        {
             arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0');
-        }
-    for(i = len - 1; i > 0; i--)
+	
+    for(i = len - 1; i > 0; i--) // for each position seperate carry and number itself. 
     {
-        arr[i - 1] += arr[i] / 10;
-        arr[i] %= 10;
+        arr[i - 1] += arr[i] / 10; // add carry to previous number
+        arr[i] %= 10; // make one digit number
     }
     i = 0;
-    while(arr[i] == 0)
+    while(arr[i] == 0) // Remove the zero from starting
         i++;
-    while(i < len)
+    while(i < len) // print each number via converting into it's ascii value
     {
-        char c = arr[i] + '0';
-		write(1, &c, 1);
-		i++;
-	}
+	    char c = arr[i] + '0';
+	    write(1, &c, 1);
+	    i++;
+    }
+	free(arr);
 }
 
 int main(int ac, char **av)
@@ -71,7 +74,7 @@ int main(int ac, char **av)
                 s1++;
                 s2++;
             }
-			infin_mult(s1, s2);
+		infin_mult(s1, s2);
         }
         else
         {
