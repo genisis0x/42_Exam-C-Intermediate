@@ -47,14 +47,14 @@ char *:smiling_imp: = "Very_Good_question's";
 1.	longest_sequence ✅
 2.	ord_alphalong ✅
 3.	reverse_tree ✅
-4.	str_maxlenoc -> ✅ -> good solution Using Dp for LCS :star2: :star2:
+4.	str_maxlenoc -> ✅ -> good solution Using Dp for LCS(Lowest Common String) :star2: :star2:
 5.  is_looping  ✅
 >> #### Subject Status level 3 :heavy_check_mark: :100:
 1.	can_split ✅
 2.	perimeter  ✅
 3.	width_tree  ✅
 4.	convert_bst ✅
-5.	gold_gain -> ✅ -> Done with using space Complexity of O(M * N) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
+5.	gold_gain -> ✅ -> Good solution Done with using space Complexity of O(M * N) and time complexity of O(M * N). :star2: :star2: :star2: :star2:
 >> #### Subject Status level 4 :heavy_check_mark: :100:
 1.	clone_list -> ✅ time complexity of O(N) -> "N" no of elements in list
 2.	intersection ✅ time complexity of O(M) -> "M" highest size of list
@@ -63,6 +63,6 @@ char *:smiling_imp: = "Very_Good_question's";
 5.	volume_histogram -> ✅ time complexity of O(N) and Space complexity of O(1) :star2: :star2: :star2: -> Best Solutuon :D
 >> #### Subject Status level 5 :star2: :star2: :heavy_check_mark:
 1.	count_island -> #### Remaing
-2.	g_diam -> ✅ :smiling_imp:
+2.	g_diam -> ✅ :smiling_imp: (used Backtracking and Basic adjacent matrix graph representation) -> Time complexity-- O(V * V) & Space Complexity-- O(V)
 3.	infin_add -> ✅ --> time complexity O(N) :smiling_imp:
 4.  infin_mult -> ✅ --> time complexity O(N * M)and Space Complexity of O(M + N) :smiling_imp:
