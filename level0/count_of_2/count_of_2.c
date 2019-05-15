@@ -10,34 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void  ft_count_nbr(int nb, int *count)
+void checker(int n, int *count)
 {
-	if (nb >=10)
-	{
-		ft_count_nbr( nb / 10, count);
-		ft_count_nbr(nb % 10, count);
-	}
-	if (nb == 2)
-		*count += 1;
+    if(n >= 10)
+    {
+        checker(n / 10, count);
+        checker(n % 10, count);
+    }
+    if(n == 2)
+        *count += 1;
 }
 
-int count_of_2(int n)
+int    count_of_2(int n)
 {
-	int i = 1;
-	int count = 0;
-
-	while ( ++i <= n)
-	{
-		ft_count_nbr(i, &count);
-	}
-	return (count);
+    int i = 1;
+    int count = 0;
+    while(++i <= n)
+    {
+        checker(i, &count);
+    }
+    return count;
 }
 
-#include <stdlib.h>
-#include <stdio.h>
-int main (int ac , char **av)
-{
-	int res;
-	res = count_of_2(atoi(av[1]));
-	printf("%i", res);
-}
+// #include <stdio.h>
+// int main()
+// {
+//     int a;
+//     scanf("%d", &a);
+//     printf("The count od 2 is: %d\n", count_of_2(a));
+//     return 0;
+// }
