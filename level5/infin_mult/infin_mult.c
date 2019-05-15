@@ -23,14 +23,12 @@ int len(char *s)
     return c;
 }
 
-char *infin_mult(char *s1, char *s2)
+void infin_mult(char *s1, char *s2)
 {
     if(*s1 == '0' || *s2 == '0')
     {
-        char *res =(char *)malloc(sizeof(char) * 2);
-        res[0] = '0';
-        res[1] = '\0';
-        return res;
+		write (1, "0", 1);
+		return ;
     }
     int l1 = len(s1);
     int l2 = len(s2);
@@ -49,19 +47,15 @@ char *infin_mult(char *s1, char *s2)
         arr[i - 1] += arr[i] / 10;
         arr[i] %= 10;
     }
-    char *res = (char *)malloc(sizeof(char) * (len + 1));
     i = 0;
-    j = 0;
     while(arr[i] == 0)
         i++;
     while(i < len)
     {
-        res[j] = arr[i] + '0';
-        j++;
-        i++;
-    }
-    res[j] = '\0';
-    return res;
+        char c = arr[i] + '0';
+		write(1, &c, 1);
+		i++;
+	}
 }
 
 int main(int ac, char **av)
@@ -77,12 +71,7 @@ int main(int ac, char **av)
                 s1++;
                 s2++;
             }
-            char *res = infin_mult(s1, s2);
-            while(*res)
-            {
-                write(1, res, 1);
-                res++;
-            }
+			infin_mult(s1, s2);
         }
         else
         {
@@ -92,12 +81,7 @@ int main(int ac, char **av)
                 s2++;
             if(*s1 != '0' && *s2 != '0')
                 write(1, "-", 1);
-            char *res = infin_mult(s1, s2);
-            while(*res)
-            {
-                write(1, res, 1);
-                res++;
-            }
+            infin_mult(s1, s2);
         }
     }
     write(1, "\n", 1);
