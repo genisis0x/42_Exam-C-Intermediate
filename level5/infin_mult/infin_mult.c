@@ -15,120 +15,94 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int ft_strlen(char *s)
+int len(char *s)
 {
-    int c = 0, i = 0;
-    while(s[i])
-    {
-        if(s[i] == '-')
-        {
-            i++;
-        }
-        else
-        {
-            c++;
-            i++;
-        }
-    }
+    int c = 0;
+    for(; *s; s++)
+        c++;
     return c;
-}
-
-char *ft_str_cpy(char *s)
-{
-    int i = 0, j = 0;
-    char *res = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-    while(s[j])
-    {
-        if(s[j] == '-')
-        {
-            j++;
-        }
-        else
-        {
-            res[i] = s[j];
-            j++;
-            i++;
-        }
-    }
-    res[i] = '\0';
-    return res;
 }
 
 char *infin_mult(char *s1, char *s2)
 {
-    s1 = ft_str_cpy(s1);
-    s2 = ft_str_cpy(s2);
-
     if(*s1 == '0' || *s2 == '0')
-        return "0";
-    int len1 = ft_strlen(s1);
-    int len2 = ft_strlen(s2);
-    int len = len1 + len2;
-    
-    int i, j;
-    int *arr = (int *)malloc(sizeof(int) * len); //the number of digits of the result - len is the top;
-    for(i = 0; i < len; i++)
     {
-        arr[i] = 0;
+        char *res =(char *)malloc(sizeof(char) * 2);
+        res[0] = '0';
+        res[1] = '\0';
+        return res;
     }
-    for(i = len1 - 1; i >= 0; i--)
-        for(j = len2 - 1; j >= 0; j--)
+    int l1 = len(s1);
+    int l2 = len(s2);
+    int len = l1 + l2;
+    int *arr = (int *)malloc(sizeof(int) * (len));
+    int i, j;
+    for(i = 0; i < len; i++)
+        arr[i] = 0;
+    for(i = l1 -1; i >= 0; i--)
+        for(j = l2 -1; j>= 0; j--)
         {
-            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0');  //collect result of each position;
+            arr[i + j + 1] += (s1[i] - '0') * (s2[j] - '0');
         }
-    for(i = len - 1; i > 0; i--) //restore the carry for each position and get the final result;
+    for(i = len - 1; i > 0; i--)
     {
         arr[i - 1] += arr[i] / 10;
         arr[i] %= 10;
     }
-    char *r = (char *)malloc(sizeof(char) * (len + 1)); //converting the digits result to string;
+    char *res = (char *)malloc(sizeof(char) * (len + 1));
     i = 0;
     j = 0;
-    while (arr[i] == 0) //in case the zero position has no carry, if it does, ignore it;
+    while(arr[i] == 0)
         i++;
     while(i < len)
     {
-        r[j] = arr[i] + '0';
-        i++;
+        res[j] = arr[i] + '0';
         j++;
+        i++;
     }
-    r[j] = '\0';
-    return r;
+    res[j] = '\0';
+    return res;
 }
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
-     
     if(ac == 3)
     {
         char *s1 = av[1];
         char *s2 = av[2];
         if((*s1 == '-' && *s2 == '-') || (*s1 != '-' && *s2 != '-'))
         {
-            char *r = infin_mult(s1, s2);
-            while(*r)
+            if((*s1 == '-' && *s2 == '-'))
             {
-                write(1, r, 1);
-                r++;
+                s1++;
+                s2++;
+            }
+            char *res = infin_mult(s1, s2);
+            while(*res)
+            {
+                write(1, res, 1);
+                res++;
             }
         }
         else
         {
-            s1 = ft_str_cpy(s1);
-            s2 = ft_str_cpy(s2);
+            if(*s1 == '-')
+                s1++;
+            if(*s2 == '-')
+                s2++;
             if(*s1 != '0' && *s2 != '0')
                 write(1, "-", 1);
-            char *r = infin_mult(s1, s2);
-            while(*r)
+            char *res = infin_mult(s1, s2);
+            while(*res)
             {
-                write(1, r, 1);
-                r++;
+                write(1, res, 1);
+                res++;
             }
         }
     }
     write(1, "\n", 1);
+    return 0;
 }
-
 // // Good TEST CASES
 
 // // Input : 1
