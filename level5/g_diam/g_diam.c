@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   g_diam.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manmeetsingh <manmeetsingh@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 05:31:54 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/14 07:13:30 by maparmar         ###   ########.fr       */
+/*   Updated: 2019/05/16 09:07:58 by manmeetsing      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 #define num(x) x >= '0' && x <= '9'
 
 static int ref;
@@ -62,8 +63,13 @@ void longest_path(int max, uint8_t arr[max][max], uint8_t visited[max], int r, i
     {
         if(!visited[c] && arr[r][c])
         {
-           ref = (ref < length + 1) ? length + 1 : ref;
-           longest_path(max, arr, visited, c, length + 1);
+            
+            if (ref < length + 1)
+            {
+                ref = (ref < length + 1) ? length + 1 : ref;
+                printf("The path is : %d\n", c);
+            }
+            longest_path(max, arr, visited, c, length + 1);
         }
     }
     visited[r] = 0;
