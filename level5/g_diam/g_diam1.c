@@ -65,19 +65,19 @@ int check(struct s_list *t, int item)
 void add_edge(struct Graph *G, int src, int des)
 {
     struct s_list temp = G->list_array[src];
-    if(!check(&temp, des))
-    {
+    // if(!check(&temp, des))
+    // {
         struct list_node *n = add_list_node(des);
         n->next = G->list_array[src].head;
         G->list_array[src].head = n;
-    }
+    // }
     struct s_list temp1 = G->list_array[des];
-    if(!check(&temp1, src))
-    {
-        struct list_node *n = add_list_node(src);
+    // if(!check(&temp1, src))
+    // {
+        n = add_list_node(src);
         n->next = G->list_array[des].head;
         G->list_array[des].head = n;
-    }
+    // }
 }
 
 struct Graph *make_graph(int V, char **s)
@@ -104,45 +104,45 @@ int list_length(struct list_node *h)
 
 void solve_graph(struct Graph *G, int max, int visited[], int r, int length, int *long_length)
 {
-    int len = list_length(G->list_array[r].head);
-    *long_length = len > *long_length ? len : *long_length;
-    // visited[r] = 1;
-    // while(G->list_array[r].head)
-    // {
-    //     if (!visited[G->list_array[r].head->data])
-    //     {
-    //         *long_length = (*long_length < length + 1) ? length + 1 : *long_length;
-    //         printf("The path is : %d\n", G->list_array[r].head->data);
-    //         solve_graph(G, max, visited, G->list_array[r].head->data, length + 1, long_length);
-    //     }
-    //    G->list_array[r].head = G->list_array[r].head->next;
-    // }
-    //visited[r] = 0;
+    visited[r] = 1;
+    struct list_node *temp = G->list_array[r].head;
+    while(G->list_array[r].head)
+    {
+        if (visited[G->list_array[r].head->data] == 0)
+        {
+            *long_length = (*long_length < length + 1) ? length + 1 : *long_length;
+            solve_graph(G, max, visited, G->list_array[r].head->data, length + 1, long_length);
+        }
+        G->list_array[r].head = G->list_array[r].head->next;
+            
+    }
+    visited[r] = 0;
+    G->list_array[r].head = temp;
 }
 
-void print_g(struct Graph *g)
-{
-    int v;
-    int flag = 1;
-    for (v = 0; v < g->vertices; ++v) 
-    { 
-        struct list_node *pCrawl = g->list_array[v].head; 
-       if(pCrawl)
-            printf("\n Adjacency list of vertex %d\n head ", v); 
-        while (pCrawl) 
-        { 
-            //printf("\n Adjacency list of vertex %d\n head ", v);
-            printf("-> %d", pCrawl->data); 
-            pCrawl = pCrawl->next;
-            flag = 0;
-        }
-        if(flag == 0)
-        {
-            printf("\n");
-            flag = 1;
-        }
-    } 
-}
+// void print_g(struct Graph *g)
+// {
+//     int v;
+//     int flag = 1;
+//     for (v = 0; v < g->vertices; ++v) 
+//     { 
+//         struct list_node *pCrawl = g->list_array[v].head; 
+//        if(pCrawl)
+//             printf("\n Adjacency list of vertex %d\n head ", v); 
+//         while (pCrawl) 
+//         { 
+//             //printf("\n Adjacency list of vertex %d\n head ", v);
+//             printf("-> %d", pCrawl->data); 
+//             pCrawl = pCrawl->next;
+//             flag = 0;
+//         }
+//         if(flag == 0)
+//         {
+//             printf("\n");
+//             flag = 1;
+//         }
+//     } 
+// }
 
 int main(int ac, char **av)
 {
@@ -155,11 +155,11 @@ int main(int ac, char **av)
         int *visited = (int *)malloc(sizeof(int) * (max + 1));
         for(int i = 0; i <= max; i++)
             visited[i] = 0;
-        int long_length = 1;
-        print_g(G);
+        int long_length = 2;
+        //print_g(G);
         for(int r = 0; r <= max; r++)
             solve_graph(G, max + 1, visited, r, 1, &long_length);
-        ft_put_nbr(long_length + 1);
+        ft_put_nbr(long_length);
     }
     write(1, "\n", 1);
     return 0;

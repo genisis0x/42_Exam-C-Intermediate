@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   g_diam.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manmeetsingh <manmeetsingh@student.42.f    +#+  +:+       +#+        */
+/*   By: maparmar <maparmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 05:31:54 by maparmar          #+#    #+#             */
-/*   Updated: 2019/05/16 09:07:58 by manmeetsing      ###   ########.fr       */
+/*   Updated: 2019/05/16 17:35:07 by maparmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void longest_path(int max, uint8_t arr[max][max], uint8_t visited[max], int r, i
             if (ref < length + 1)
             {
                 ref = (ref < length + 1) ? length + 1 : ref;
-                printf("The path is : %d\n", c);
+                printf("The path is : %d\n", r);
             }
             longest_path(max, arr, visited, c, length + 1);
         }
