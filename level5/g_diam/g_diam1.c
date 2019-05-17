@@ -65,19 +65,19 @@ int check(struct s_list *t, int item)
 void add_edge(struct Graph *G, int src, int des)
 {
     struct s_list temp = G->list_array[src];
-    // if(!check(&temp, des))
-    // {
+    if(!check(&temp, des))
+    {
         struct list_node *n = add_list_node(des);
         n->next = G->list_array[src].head;
         G->list_array[src].head = n;
-    // }
+    }
     struct s_list temp1 = G->list_array[des];
-    // if(!check(&temp1, src))
-    // {
-        n = add_list_node(src);
+    if(!check(&temp1, src))
+    {
+        struct list_node *n = add_list_node(src);
         n->next = G->list_array[des].head;
         G->list_array[des].head = n;
-    // }
+    }
 }
 
 struct Graph *make_graph(int V, char **s)
