@@ -1,4 +1,4 @@
-1. 1st Solution -> g_diam.c -> implementation of Graph by Adjacency Matrix method
-2. 2nd Solution -> g_diam.1.c -> implementation of Graph by Adjacency list method
+1. 1st Solution -> g_diam.c -> implementation of Graph by Adjacency Matrix method -> Time Complex O(V * V)
+2. 2nd Solution -> g_diam.1.c -> implementation of Graph by Adjacency list method -> optimized solution as Time Complex O(V + E)
 3. DFT is used and DFS is used for each node + Backtracking 
 4. at each point the max_length_path is consider.
