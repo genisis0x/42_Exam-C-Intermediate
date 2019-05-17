@@ -94,13 +94,13 @@ struct Graph *make_graph(int V, char **s)
 }
 
 
-int list_length(struct list_node *h)
-{
-    int c = 0;
-    for(; h; h = h->next)
-        c++;
-    return c;
-}
+// int list_length(struct list_node *h)
+// {
+//     int c = 0;
+//     for(; h; h = h->next)
+//         c++;
+//     return c;
+// }
 
 void solve_graph(struct Graph *G, int max, int visited[], int r, int length, int *long_length)
 {
