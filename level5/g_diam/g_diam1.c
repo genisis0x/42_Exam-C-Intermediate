@@ -1,3 +1,5 @@
+/****************************************** Method 2nd Using Adjacency list ************************************/
+
 #include "g_diam.h"
 
 void ft_put_nbr(int n)

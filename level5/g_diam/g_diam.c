@@ -12,6 +12,8 @@
 
 /********************************** ### Passed Exam Version ### *************************************/
 
+/****************************************** Method 1st Using Adjacency Matrix ************************************/
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
