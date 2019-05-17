@@ -109,6 +109,8 @@ void solve_graph(struct Graph *G, int max, int visited[], int r, int length, int
     {
         if (visited[temp->data] == 0)
         {
+            if(*long_length < length + 1)
+                printf("%d\n", temp->data);
             *long_length = (*long_length < length + 1) ? length + 1 : *long_length;
             solve_graph(G, max, visited, temp->data, length + 1, long_length);
         }
