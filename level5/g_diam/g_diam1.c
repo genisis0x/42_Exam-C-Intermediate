@@ -87,7 +87,6 @@ struct Graph *make_graph(int V, char **s)
     {
         int src = ft_atoi(s);
         int des = ft_atoi(s);
-        //printf("the src %d && the des is %d\n", src, des);
         add_edge(G, src, des);
     }
     return G;
@@ -106,18 +105,17 @@ void solve_graph(struct Graph *G, int max, int visited[], int r, int length, int
 {
     visited[r] = 1;
     struct list_node *temp = G->list_array[r].head;
-    while(G->list_array[r].head)
+    while(temp)
     {
-        if (visited[G->list_array[r].head->data] == 0)
+        if (visited[temp->data] == 0)
         {
             *long_length = (*long_length < length + 1) ? length + 1 : *long_length;
-            solve_graph(G, max, visited, G->list_array[r].head->data, length + 1, long_length);
+            solve_graph(G, max, visited, temp->data, length + 1, long_length);
         }
-        G->list_array[r].head = G->list_array[r].head->next;
+        temp = temp->next;
             
     }
     visited[r] = 0;
-    G->list_array[r].head = temp;
 }
 
 // void print_g(struct Graph *g)
