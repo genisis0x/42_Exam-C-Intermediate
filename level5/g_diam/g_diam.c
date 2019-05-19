@@ -67,7 +67,7 @@ void longest_path(int max, uint8_t arr[max][max], uint8_t visited[max], int r, i
             if (ref < length + 1)
             {
                 ref = (ref < length + 1) ? length + 1 : ref;
-                printf("The path is : %d\n", r);
+                //printf("The path is : %d\n", r);
             }
             longest_path(max, arr, visited, c, length + 1);
         }
