@@ -107,7 +107,7 @@ int ft_strcmp(char *a, char *b)
         d = *b;
         if(c != d)
         {
-            if ((c >= 'A' && c <= 'Z') || (d >= 'B' && d <= 'Z'))
+            if ((c >= 'A' && c <= 'Z') || (d >= 'A' && d <= 'Z'))
             {
                 if (c >= 'A' && c <= 'Z')
                 {
