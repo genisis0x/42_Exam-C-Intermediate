@@ -28,7 +28,7 @@ int    volume_histogram(int *histogram, int size)
 			if(histogram[low] > left_max) // if the Left global max is lesser upgrade the max and procced.
 				left_max = histogram[low];
 			else
-				volume += left_max - histogram[low]; // Calculate Volume if the max is not modified.
+				volume += left_max - histogram[low]; // Calculate Volume if the left_max is not modified.
 			low++;
 		}
 		else // Traverse from right if the building arch is bigger of left side
@@ -36,7 +36,7 @@ int    volume_histogram(int *histogram, int size)
 			if(histogram[high] > right_max) // if the Right global max is lesser upgrade the max and procced.
 				right_max = histogram[high];
 			else
-				volume += right_max - histogram[high]; // Calculate Volume if the max is not modified.
+				volume += right_max - histogram[high]; // Calculate Volume if the right_max is not modified.
 			high--;
 		}
 	}
