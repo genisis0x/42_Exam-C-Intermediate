@@ -53,7 +53,7 @@ char *:smiling_imp: = "Very_Good_question's";
 1.	longest_sequence ✅
 2.	ord_alphalong ✅
 3.	reverse_tree ✅
-4.	str_maxlenoc -> ✅ -> good solution Using Dp for LCS(Lowest Common String) :star2: :star2:
+4.	str_maxlenoc -> ✅ -> good solution Using Dp for LCS(Lowest Common String) :star2: :star2: // Pending solution -> LCS using segment tree O(N).
 5.  is_looping  ✅
 >> #### Subject Status level 3 :heavy_check_mark: :100:
 1.	can_split ✅
