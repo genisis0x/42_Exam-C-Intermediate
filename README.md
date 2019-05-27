@@ -70,7 +70,7 @@ char *:smiling_imp: = "Very_Good_question's";
 >> #### Subject Status level 5 :star2: :star2: :heavy_check_mark:
 1.	count_island -> #### Remaing
 2.	g_diam -> ✅ :smiling_imp: 
-##### Method 1: (used Backtracking and Basic adjacent matrix graph representation) -> Time complexity-- O(V * V) & Space Complexity-- O(V). \
-##### Method 2: :smiling_imp: (used Backtracking and Basic  Adjacency list graph representation) -> Time complexity-- O(V + E) & Space Complexity-- O(V).
+  ##### Method 1: (used Backtracking and Basic adjacent matrix graph representation) -> Time complexity-- O(V * V) & Space    Complexity-- O(V). \
+  ##### Method 2: :smiling_imp: (used Backtracking and Basic  Adjacency list graph representation) -> Time complexity-- O(V + E) & Space Complexity-- O(V).
 3.	infin_add -> ✅ --> time complexity O(N) -> N highest size between two strings :smiling_imp:
 4.  infin_mult -> ✅ --> time complexity O(N * M)and Space Complexity of O(M + N) :smiling_imp:
