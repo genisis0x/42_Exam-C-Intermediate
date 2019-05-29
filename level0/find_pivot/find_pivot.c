@@ -10,13 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define for(i, a, b) for(i = (a); i < (b); i++)
+
 int find_pivot(int *arr, int n)
 {
 	int total_sum = 0;
 	int remain_sum = 0;
-	for (int i = 0; i < n; i++)
+	int i;
+	for (i,0,n)
 		total_sum += arr[i];
-	for (int i = 0; i < n; i++)
+	for (i,0,n)
 	{
 		total_sum -= arr[i];
 		if (remain_sum == total_sum)
