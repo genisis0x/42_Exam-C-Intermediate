@@ -13,64 +13,55 @@
 /************************************ #### Passed Final Exam #### *************************************/
 
 #include <stdio.h>
-int is_cap_alpha(char c)
-{
-    return (c >= 'A' && c <= 'Z');
-}
+#include <unistd.h>
+#define is_cap(c) (c >= 'A' && c <= 'Z')
+#define is_small(c) (c >= 'a' && c <= 'z')
 
-int is_sma_alpha(char c)
-{
-    return (c >= 'a' && c <= 'z');
-}
-
-void count_alp(char *s)
+void count_alpha(char *s)
 {
     int arr[26] = {0};
-    int i = 0, flag = 0;
-    while(s[i])
+    int flag = 0;
+    for(int i = 0; s[i]; i++)
     {
-        if(is_cap_alpha(s[i]))
-            arr[(int)s[i] - 'A'] += 1;
-        else if(is_sma_alpha(s[i]))
-            arr[(int)s[i] - 'a'] += 1;
-        i++;
+        if(is_cap(s[i]))
+            arr[(int)(s[i] - 'A')] += 1;
+        else if(is_small(s[i]))
+            arr[(int)(s[i] - 'a')] += 1;
     }
-    i = 0;
-    while(s[i])
+    while(*s)
     {
-        if(is_cap_alpha(s[i]) || is_sma_alpha(s[i]))
+        if(is_cap(*s) || is_small(*s))
         {
-            if(is_cap_alpha(s[i]) && arr[(int)s[i] - 'A'] > 0)
+            if(is_cap(*s) && arr[(int)(*s - 'A')] > 0)
             {
                 if(flag == 0)
                 {
-                    printf("%d%c", arr[(int)s[i] - 'A'], s[i] + 32);
+                    printf("%d%c",arr[(int)(*s - 'A')], *s + 32);
+                    arr[(int)(*s - 'A')] = 0;
                     flag++;
-                    arr[(int)s[i] - 'A'] = 0;
                 }
                 else
                 {
-                    printf(", %d%c", arr[(int)s[i] - 'A'], s[i] + 32);
-                    arr[(int)s[i] - 'A'] = 0;
+                    printf(", %d%c",arr[(int)(*s - 'A')], *s + 32);
+                    arr[(int)(*s - 'A')] = 0;
                 }
             }
-            else if(is_sma_alpha(s[i]) && arr[(int)s[i] - 'a'] > 0)
+            else if(is_small(*s) && arr[(int)(*s - 'a')] > 0)
             {
                 if(flag == 0)
                 {
-                    printf("%d%c", arr[(int)s[i] - 'a'], s[i]);
+                    printf("%d%c",arr[(int)(*s - 'a')], *s);
+                    arr[(int)(*s - 'a')] = 0;
                     flag++;
-                    arr[(int)s[i] - 'a'] = 0;
                 }
                 else
                 {
-                    printf(", %d%c", arr[(int)s[i] - 'a'], s[i]);
-                    arr[(int)s[i] - 'a'] = 0;
+                    printf(", %d%c",arr[(int)(*s - 'a')], *s);
+                    arr[(int)(*s - 'a')] = 0;
                 }
             }
-            
         }
-        i++;
+        s++;
     }
 }
 
@@ -78,7 +69,8 @@ int main(int ac, char **av)
 {
     if(ac == 2)
     {
-        count_alp(av[1]);
+        count_alpha(av[1]);
     }
     printf("\n");
+    return 0;
 }
