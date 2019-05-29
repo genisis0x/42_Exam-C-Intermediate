@@ -43,17 +43,18 @@ int    volume_histogram(int *histogram, int size)
 	return volume;
 }
 
-#include <stdio.h>
-int main()
-{
-	int size;
-	scanf("%d", &size);
-	int arr[size];
-	int i = 0;
-	while (i < size)
-	{
-		scanf("%d", &arr[i++]);
-	}
-	printf("The volume of the given histogram is: %d\n", volume_histogram(arr, size));
-	return 0;
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	int size;
+// 	scanf("%d", &size);
+// 	int arr[size];
+// 	int i = 0;
+// 	while (i < size)
+// 	{
+// 		scanf("%d", &arr[i++]);
+// 	}
+// 	printf("The volume of the given histogram is: %d\n", volume_histogram(arr, size));
+// 	return 0;
+// }
+
