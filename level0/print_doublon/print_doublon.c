@@ -1,3 +1,5 @@
+/************************************* Passed Exam *******************************/
+
 #include <stdio.h>
 void print_doublon(int *a, int na, int *b, int nb)
 {
