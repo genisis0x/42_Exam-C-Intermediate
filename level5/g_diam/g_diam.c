@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #define num(x) x >= '0' && x <= '9'
+#define for(i, a, b) for(i = (a); i < (b); i++)
 
 static int ref;
 
@@ -44,12 +45,12 @@ void ft_putnbr(int n)
 }
 
 
-int find_max(char **s)
+int find_max(char *s)
 {
     int max = 0, num;
-    while(**s)
+    while(*s)
     {
-        num = ft_atoi(s);
+        num = ft_atoi(&s);
         max = num > max ? num : max;
     }
     return max;
@@ -59,35 +60,29 @@ int find_max(char **s)
 void longest_path(int max, uint8_t arr[max][max], uint8_t visited[max], int r, int length)
 {
     visited[r] = 1;
-    for(int c = 0; c < max; c++)
+    int c;
+    for(c,0,max)
     {
-        if(!visited[c] && arr[r][c])
+        if(!visited[c] && arr[r][c]) // if the node is not visited and it is the valid edge in Graph
         {
-            
-            if (ref < length + 1)
-            {
-                ref = (ref < length + 1) ? length + 1 : ref;
-                //printf("The path is : %d\n", r);
-            }
-            longest_path(max, arr, visited, c, length + 1);
+			ref = (ref < length + 1) ? length + 1 : ref; // Updated ref or the length of valid edge in Graph
+            longest_path(max, arr, visited, c, length + 1); // Call fucntion to the all connected node's.
         }
     }
-    visited[r] = 0;
+    visited[r] = 0; // Back track the whole problem
 }
 
 void solve_matrix(int max, char *s)
 {
-    int r = max, c = max;
+    int r, c;
     uint8_t arr[max][max];
     uint8_t visited[max];
-    for(r = 0; r < max; r++)
-        for(c = 0; c < max; c++)
-        {
+    for(r,0,max)
+        for(c,0,max)
             arr[r][c] = 0;
-        }
-    for(c = 0; c < max; c++)
+    for(c,0,max)
         visited[c] = 0;
-    while(*s)
+    while(*s) // Matrix maker
     {
         r = ft_atoi(&s);
         c = ft_atoi(&s);
@@ -95,7 +90,7 @@ void solve_matrix(int max, char *s)
         arr[c][r] = 1;
     }
     ref = 2;
-    for(r = 0; r < max; r++)
+    for(r,0,max)
         longest_path(max, arr, visited, r, 1);
 }
 
@@ -104,14 +99,14 @@ int main(int ac, char **av)
     if(ac == 2)
     {
         char *s = av[1];
-        int max = find_max(&s);
-        s = av[1];
+        int max = find_max(s);
         solve_matrix(max + 1, s);
         ft_putnbr(ref);
     }
     write(1, "\n", 1);
     return 0;
 }
+
 
 // // Good TEST CASES
 
