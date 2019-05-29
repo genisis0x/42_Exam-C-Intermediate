@@ -65,8 +65,8 @@ void longest_path(int max, uint8_t arr[max][max], uint8_t visited[max], int r, i
     {
         if(!visited[c] && arr[r][c]) // if the node is not visited and it is the valid edge in Graph
         {
-			ref = (ref < length + 1) ? length + 1 : ref; // Updated ref or the length of valid edge in Graph
-            longest_path(max, arr, visited, c, length + 1); // Call fucntion to the all connected node's.
+		ref = (ref < length + 1) ? length + 1 : ref; // Updated ref or the length of valid edge in Graph
+		longest_path(max, arr, visited, c, length + 1); // Call fucntion to the all connected node's.
         }
     }
     visited[r] = 0; // Back track the whole problem
