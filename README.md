@@ -1,3 +1,12 @@
+<h2>
+
+```diff
+- => If you found helpful then please do follow and give a star 
+```
+:v: :raised_hands: 
+</h2>
+
+
 # 42_Exam-C-Intermediate--ExamShell
 Repository is used for the prepration of C - Intermediate examshell in 42 School - Silicon Valley.It contains all of the Intermediate Questions and solutions to it.
 
@@ -16,14 +25,6 @@ Any suggestion's will be highly appreciated. -_-
 4. r --> run
 5. gui ---> Graphic User Interface.
 6. use 's' key to go to each next step.
-
-<h2>
-
-```diff
-- => If you found helpful then please do follow and give a star 
-```
-:v: :raised_hands: 
-</h2>
 
 ## Steps to clone the work
 1. cd ~
