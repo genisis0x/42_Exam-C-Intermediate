@@ -45,7 +45,7 @@ struct Graph *graph(int V)
     return G;
 }
 
-struct list_node *add_list_node(int data)
+struct list_node *add_list_node(int data) // add the node in the Link_List 
 {
     struct list_node *n = (struct list_node *)malloc(sizeof(struct list_node));
     n->data = data;
@@ -53,7 +53,7 @@ struct list_node *add_list_node(int data)
     return n;
 }
 
-int check(struct s_list *t, int item)
+int check(struct s_list *t, int item) //check if the list head is already added or not.
 {
     while(t->head)
     {
@@ -65,10 +65,10 @@ int check(struct s_list *t, int item)
 }
 
 
-void add_edge(struct Graph *G, int src, int des)
+void add_edge(struct Graph *G, int src, int des) // add the list in the array of Link_List
 {
     struct s_list temp = G->list_array[src];
-    if(!check(&temp, des))
+    if(!check(&temp, des)) //
     {
         struct list_node *n = add_list_node(des);
         n->next = G->list_array[src].head;
@@ -83,9 +83,9 @@ void add_edge(struct Graph *G, int src, int des)
     }
 }
 
-struct Graph *make_graph(int V, char **s)
+struct Graph *make_graph(int V, char **s) // Graph maker
 {
-    struct Graph *G = graph(V); 
+    struct Graph *G = graph(V);
     while(**s)
     {
         int src = ft_atoi(s);
@@ -95,57 +95,22 @@ struct Graph *make_graph(int V, char **s)
     return G;
 }
 
-
-// int list_length(struct list_node *h)
-// {
-//     int c = 0;
-//     for(; h; h = h->next)
-//         c++;
-//     return c;
-// }
-
 void solve_graph(struct Graph *G, int max, int visited[], int r, int length, int *long_length)
 {
     visited[r] = 1;
     struct list_node *temp = G->list_array[r].head; // because if head is directly itireted then there will be a issue in recursion and back tracking, so remove that issue just use temp
     while(temp)
     {
-        if (!visited[temp->data])
+        if (!visited[temp->data]) // if the node is not visited then go and explore the DFS on that node.
         {
-            // if(*long_length < length + 1)
-            //     printf("%d\n", temp->data);
-            *long_length = (*long_length < length + 1) ? length + 1 : *long_length;
+            *long_length = (*long_length < length + 1) ? length + 1 : *long_length; // if more than 2 nodes have been seen then updated the len.
             solve_graph(G, max, visited, temp->data, length + 1, long_length);
         }
-        temp = temp->next;
+        temp = temp->next; // jump to next node in the Array of Link_List
             
     }
-    visited[r] = 0;
+    visited[r] = 0; // Backtrack
 }
-
-// void print_g(struct Graph *g)
-// {
-//     int v;
-//     int flag = 1;
-//     for (v = 0; v < g->vertices; ++v) 
-//     { 
-//         struct list_node *pCrawl = g->list_array[v].head; 
-//        if(pCrawl)
-//             printf("\n Adjacency list of vertex %d\n head ", v); 
-//         while (pCrawl) 
-//         { 
-//             //printf("\n Adjacency list of vertex %d\n head ", v);
-//             printf("-> %d", pCrawl->data); 
-//             pCrawl = pCrawl->next;
-//             flag = 0;
-//         }
-//         if(flag == 0)
-//         {
-//             printf("\n");
-//             flag = 1;
-//         }
-//     } 
-// }
 
 int main(int ac, char **av)
 {
@@ -153,13 +118,11 @@ int main(int ac, char **av)
     {
         char *s = av[1];
         int max = ft_max(s);
-        //printf("the max value is: %d\n", max);
         struct Graph *G = make_graph(max + 1, &s);
         int *visited = (int *)malloc(sizeof(int) * (max + 1));
         for(int i = 0; i <= max; i++)
             visited[i] = 0;
         int long_length = 2;
-        //print_g(G);
         for(int r = 0; r <= max; r++)
             solve_graph(G, max + 1, visited, r, 1, &long_length);
         ft_put_nbr(long_length);
