@@ -38,6 +38,8 @@ int find_pivot(int *arr, int n)
 int main (void)
 {
 	int arr[] = {1, 0, 1};
-	printf("The pivot is: %d",find_pivot(arr, 3));
+	printf("The pivot is: %d\n",find_pivot(arr, 3));
 	return 0;
 }
+
+// Expected Output: 1
