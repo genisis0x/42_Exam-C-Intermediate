@@ -83,21 +83,39 @@ int isEmpty(struct s_queue *queue)
 int main(void)
 {
     struct s_queue  *q = init();
-	printf("The stack has been setup!!\n");
-	printf("The stack is empty: %d\n", isEmpty(q));
-	puts("putting Hello");
+	printf("The Queue has been setup..!!\n");
+	printf("The Queue is empty: %s\n", isEmpty(q) ? "YES" : "NO");
+	puts("Putting Hello");
 	enqueue(q, "Hello");
-	printf("The stack is empty: %d\n", isEmpty(q));
-	printf("The peek of the stack is: %s\n", peek(q));
-	puts("putting World!!");
-	enqueue(q, "Wolrd!!");
-	printf("The peek of the stack is: %s\n", peek(q));
-	printf("The stack is empty: %d\n", isEmpty(q));
-	printf("The first dequeue operation is: %s\n", dequeue(q));
-	printf("The Second dequeue operation is:  %s\n", dequeue(q));
-	printf("The Third dequeue operation is %s\n", dequeue(q));
-	printf("The stack is empty: %d\n", isEmpty(q));
-	printf("The peek of the stack is: %s\n", peek(q));
+	printf("The Queue is empty: %s\n", isEmpty(q) ? "YES" : "NO");
+	printf("The peek of the Queue is -> %s\n", peek(q) );
+	puts("Putting World!!");
+	enqueue(q, "World!!");
+	printf("The peek of the Queue is -> %s\n", peek(q));
+	printf("The Queue is empty: %s\n", isEmpty(q) ? "YES" : "NO");
+	printf("The first dequeue operation Removes -> %s\n", dequeue(q));
+	printf("The Second dequeue operation Removes ->  %s\n", dequeue(q));
+	printf("The Third dequeue operation Removes -> %s\n", dequeue(q));
+	printf("The Queue is empty: %s\n", isEmpty(q) ? "YES" : "NO");
+	printf("The peek of the Queue is -> %s\n", peek(q));
 	return 0;
 }
+*/
+
+/*
+Expected Output:
+
+The Queue has been setup..!!
+The Queue is empty: YES
+Putting Hello
+The Queue is empty: NO
+The peek of the Queue is -> Hello
+Putting World!!
+The peek of the Queue is -> Hello
+The Queue is empty: NO
+The first dequeue operation Removes -> Hello
+The Second dequeue operation Removes ->  World!!
+The Third dequeue operation Removes -> (null)
+The Queue is empty: YES
+The peek of the Queue is -> (null)
 */
