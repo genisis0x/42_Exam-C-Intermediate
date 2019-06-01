@@ -16,7 +16,7 @@ void    equation(int n)
 // int main()
 // {
 //     int n;
-//     printf("Enter the number for which you need to execute the equation: \n");
+//     printf("Enter the number for which you need to generate the equation's\n");
 //     scanf("%d", &n);
 //     equation(n);
 //     return 0;
