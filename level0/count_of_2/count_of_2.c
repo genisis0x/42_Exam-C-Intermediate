@@ -38,7 +38,8 @@ int    count_of_2(int n)
 // int main()
 // {
 //     int a;
+//     printf("Please Enter the number: \n");
 //     scanf("%d", &a);
-//     printf("The count od 2 is: %d\n", count_of_2(a));
+//     printf("The count of 2 is: %d\n", count_of_2(a));
 //     return 0;
 // }
