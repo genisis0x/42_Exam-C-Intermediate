@@ -36,7 +36,7 @@ char *str_max_len(char *s1, char *s2)
 {
     int len1 = len(s1);
     int len2 = len(s2);
-    int arr[len1 + 1][len2 + 1];
+    int arr[len1 + 1][len2 + 1]; // 2-D array to solve for LCS substring. --- DP
     int i, j;
     int len_max = 0;
     int start, i_idx, j_idx;
