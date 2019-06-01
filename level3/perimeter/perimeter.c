@@ -124,3 +124,78 @@ int main (void)
 	perimeter(node);
 	return 0;
 }
+
+/*
+t_node root = {
+		.value = 92,
+		.left = &(t_node){
+			.value = 85,
+			.left = &(t_node){
+				.value = 79,
+				.right = &(t_node){
+					.value = 10,
+					.left = &(t_node){
+						.value = 39,
+						.left = &(t_node){
+							.value = 35,
+							.left = &(t_node){.value = 96}
+						}
+					}
+				}
+			}
+		},
+		.right = &(t_node){
+			.value = 26,
+			.right = &(t_node){
+				.value = 64,
+				.left = &(t_node){
+					.value = 40,
+					.left = &(t_node){
+						.value = 88,
+						.left = &(t_node){
+							.value = 12,
+							.left = &(t_node){.value = 58}
+						},
+						.right = &(t_node){
+							.value = 55,
+							.left = &(t_node){.value = 58},
+							.right = &(t_node){.value = 41}
+						}
+					},
+					.right = &(t_node){
+						.value = 10,
+						.left = &(t_node){
+							.value = 52,
+							.left = &(t_node){.value = 22},
+							.right = &(t_node){.value = 35}
+						},
+						.right = &(t_node){
+							.value = 87,
+							.right = &(t_node){.value = 31}
+						}
+					}
+				},
+				.right = &(t_node){
+					.value = 78,
+					.left = &(t_node){
+						.value = 2,
+						.left = &(t_node){
+							.value = 33,
+							.right = &(t_node){.value = 55}
+						},
+						.right = &(t_node){
+							.value = 11,
+							.left = &(t_node){.value = 99}
+						}
+					},
+					.right = &(t_node){
+						.value = 85,
+						.right = &(t_node){.value = 51}
+					}
+				}
+			}
+		}
+	};
+	perimeter(&root);
+	printf("\n");
+*/
