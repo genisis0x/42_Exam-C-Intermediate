@@ -1,5 +1,7 @@
 /****************************************### Passed Exam Version ###*****************************************/
 
+// O (N * N)
+
 #include <string.h>
 #include <stdlib.h>
 #define is_odd(c) ((c - '0') % 2)
