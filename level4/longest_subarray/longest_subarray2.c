@@ -98,7 +98,7 @@ char    *longest_subarray(char *arr)
     return r;
 
 }
-
+#include <stdio.h>
 int main (int ac, char **av)
 {
     if(ac == 2)
