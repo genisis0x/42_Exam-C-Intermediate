@@ -62,9 +62,9 @@ int main (int ac, char **av)
 // 10$
 
 // Input : 3
-// 1110110111 | cat -e
+// c | cat -e
 // Output :
-// 010$
+// 0110$
 
 // Input : 4
 // 42424221422124332536547 | cat -e
@@ -90,4 +90,4 @@ int main (int ac, char **av)
 // Input : 8
 // 79135790246802 | cat -e
 // Output :
-// 10$
+// 79135790246802$
