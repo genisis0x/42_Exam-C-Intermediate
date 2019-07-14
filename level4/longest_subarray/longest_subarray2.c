@@ -14,7 +14,7 @@ char    *longest_subarray(char *arr)
     int n = strlen(arr);
     int max_size = -1, start_index; 
 
-	// Create an auxiliary array sunmleft[]. g
+	// Create an auxiliary array prefix_sum[]. g
 	// prefix_sum[i] will be sum of array 
 	// elements from arr[0] to arr[i] 
 
