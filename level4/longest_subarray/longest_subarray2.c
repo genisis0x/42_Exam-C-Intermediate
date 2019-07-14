@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #define is_odd(c) ((c - '0') % 2)
 #define max(a, b) (a > b ? a : b)
-#include <stdio.h>
 
 char    *longest_subarray(char *arr)
 {
