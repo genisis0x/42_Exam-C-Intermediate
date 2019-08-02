@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include <stdlib.h>
-#define is_odd(c) ((c - '0') % 2)
+#define is_odd(c) ((c - '0') & 1)
 
 char    *longest_subarray(char *arr)
 {
@@ -38,16 +38,16 @@ char    *longest_subarray(char *arr)
     return r;
 }
 
-// #include <stdio.h>
-// int main (int ac, char **av)
-// {
-//     if(ac == 2)
-//     {
-//         printf("%s", longest_subarray(av[1]));
-//     }
-//     printf("\n");
-//     return 0;
-// }
+#include <stdio.h>
+int main (int ac, char **av)
+{
+    if(ac == 2)
+    {
+        printf("%s", longest_subarray(av[1]));
+    }
+    printf("\n");
+    return 0;
+}
 
 // // Good TEST CASES
 
