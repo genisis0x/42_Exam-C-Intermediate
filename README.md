@@ -45,7 +45,7 @@ char *:smiling_imp: = "Very_Good_question's";
 1.  count_of_2 ->	✅
 2.	equation ->	✅
 3.	find_pivot ->	✅
-4.	is_anagram ->	✅ solution 2ns with file is_anagram1.c is of time complexity O(N) and Space Complexity O(1) using XOR hack.
+4.	is_anagram ->	✅ solution with file is_anagram1.c is of time complexity O(N) and Space Complexity O(1) using XOR hack.
 5.	print_doublon ->	✅
 >> #### Subject	Status level 1 :heavy_check_mark: :100:
 1.	count_alpha ->	✅
