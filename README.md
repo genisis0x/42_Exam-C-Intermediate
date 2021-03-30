@@ -6,6 +6,14 @@
 :v: :raised_hands: 
 </h2>
 
+<h3> 
+  
+```diff 
+    For Donation please use below address
+    0xF164A4DE04D55f268AdB795434BcE932Ea8Db731
+```
+</h3>
+
 
 # 42_Exam-C-Intermediate--ExamShell
 Repository is used for the prepration of C - Intermediate examshell in 42 School - Silicon Valley.It contains all of the Intermediate Questions and solutions to it.
